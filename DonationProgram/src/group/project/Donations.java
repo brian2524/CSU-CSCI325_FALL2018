@@ -10,4 +10,5 @@ package group.project;
  */
 public class Donations {
     
+    
 }
