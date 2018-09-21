@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}By using this program you agree to hold the authors harmless
+${licensePrefix}from any damages incurred.
+<#if licenseLast??>
+${licenseLast}
+</#if>
