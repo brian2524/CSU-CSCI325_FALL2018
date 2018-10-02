@@ -10,11 +10,13 @@ package group.project;
  */
 public class Donor {
     private String name = new String();
-    private double[] amountDonated;
-    private String[] areaDonated;
+    private double amountDonated;
+    private String areaDonated;
     
     public Donor (String n, double amt, String area){
-        
+        name = n;
+        amountDonated = amt;
+        areaDonated = area;
     }
 
     public String getName() {
@@ -25,20 +27,26 @@ public class Donor {
         this.name = name;
     }
 
-    public double[] getAmountDonated() {
+    public double getAmountDonated() {
         return amountDonated;
     }
 
-    public void setAmountDonated(double[] amountDonated) {
+    public void setAmountDonated(double amountDonated) {
         this.amountDonated = amountDonated;
     }
 
-    public String[] getAreaDonated() {
+    public String getAreaDonated() {
         return areaDonated;
     }
 
-    public void setAreaDonated(String[] areaDonated) {
+    public void setAreaDonated(String areaDonated) {
         this.areaDonated = areaDonated;
+    }
+    
+    @Override
+    public String toString(){
+        return ("Donor: " + name + "\nAmount given: " + amountDonated
+                + "\nArea Donated: " + areaDonated);
     }
     
 }
