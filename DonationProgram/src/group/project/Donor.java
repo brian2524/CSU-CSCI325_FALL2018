@@ -8,6 +8,7 @@ package group.project;
  *
  * @author Jedidiah Bird
  */
+
 public class Donor {
     private String firstName = new String();
     private String lastName = new String();
@@ -75,7 +76,6 @@ public class Donor {
                 + "\nAmount given: " + amountDonated + " (" + cashCheck + ")"
                 + "\nArea Donated: " + areaDonated);
         }
-        
         
         return output;
     }
