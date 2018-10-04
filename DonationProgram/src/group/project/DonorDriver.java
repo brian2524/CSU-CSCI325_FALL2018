@@ -6,7 +6,7 @@ package group.project;
 
 /**
  *
- * @author Godmode
+ * @author Jedidiah Bird
  */
 public class DonorDriver {
     
