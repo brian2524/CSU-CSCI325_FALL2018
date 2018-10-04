@@ -25,7 +25,7 @@ public class DonorDriver {
         
         donorList.getDonors();
         
-        donorList.getDonor("b");
+        donorList.getDonor("bob");
         
     }
     
