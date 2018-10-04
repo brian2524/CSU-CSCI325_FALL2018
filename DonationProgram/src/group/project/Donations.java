@@ -6,9 +6,12 @@ package group.project;
 
 /**
  *
- * @author Brian, Dondra, Jedidiah, Kevin, Timia
+ * @author Jedidiah Bird
  */
 public class Donations {
+
+    public Donations() {
+    }
     
     
 }

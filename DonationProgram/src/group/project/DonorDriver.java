@@ -6,7 +6,7 @@ package group.project;
 
 /**
  *
- * @author Godmode
+ * @author Jedidiah Bird
  */
 public class DonorDriver {
     
@@ -23,7 +23,7 @@ public class DonorDriver {
                 "Tithes"));
         donorList.addDonor(new Donor("Bart", "Tannen", 17, "1234", "Tithes"));
         
-        //donorList.getDonors();
+        donorList.getDonors();
         
         donorList.getDonor("alice");
         
