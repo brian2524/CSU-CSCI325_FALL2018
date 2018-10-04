@@ -6,7 +6,7 @@ package group.project;
 
 /**
  *
- * @author Brian, Dondra, Jedidiah, Kevin, Timia
+ * @author Godmode
  */
 public class Donor {
     private String firstName = new String();

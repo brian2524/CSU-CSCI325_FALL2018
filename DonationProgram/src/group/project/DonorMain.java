@@ -22,9 +22,6 @@ public class DonorMain {
         Donors.add(d);
     }
     
-//    public ArrayList<Donor> getDonors(){
-//        return Donors;
-//    }
     public void getDonors(){
         for (int i = 0; i < Donors.size(); i++){
             Donor currentDonor = Donors.get(i);
