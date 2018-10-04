@@ -9,6 +9,9 @@ package group.project;
  * @author Jedidiah Bird
  */
 public class Donations {
+
+    public Donations() {
+    }
     
     
 }
