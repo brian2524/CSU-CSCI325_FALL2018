@@ -23,9 +23,9 @@ public class DonorDriver {
                 "Tithes"));
         donorList.addDonor(new Donor("Bart", "Tannen", 17, "1234", "Tithes"));
         
-        donorList.getDonors();
+        //donorList.getDonors();
         
-        donorList.getDonor("bob");
+        donorList.getDonor("alice");
         
     }
     
