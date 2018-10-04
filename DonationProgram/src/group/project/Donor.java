@@ -11,33 +11,37 @@ package group.project;
 public class Donor {
     private String firstName = new String();
     private String lastName = new String();
-    private String middleInitial = new String();
+    private String spouseName = new String();
     private double amountDonated;
-    private String areaDonated;
+    private String cashCheck = new String();
+    private String areaDonated = new String();
     
-    public Donor (String f, String m, String l, double amt, String area){
+    public Donor (String f, String s, String l, double amt, String cc,
+            String area){
         firstName = f;
         lastName = l;
-        middleInitial = m;
+        spouseName = s;
         amountDonated = amt;
+        cashCheck = cc;
         areaDonated = area;
     }
     
-    public Donor (String f, String l, double amt, String area){
+    public Donor (String f, String l, double amt, String cc, String area){
         firstName = f;
         lastName = l;
-        middleInitial = "\b";
+        spouseName = "\b";
         amountDonated = amt;
+        cashCheck = cc;
         areaDonated = area;
     }
 
     public String getName() {
-        return (firstName + " " + middleInitial + " " + lastName);
+        return (firstName + " " + spouseName + " " + lastName);
     }
 
-    public void setName(String f, String m, String l) {
+    public void setName(String f, String s, String l) {
         this.firstName = f;
-        this.middleInitial = m;
+        this.spouseName = s;
         this.lastName = l;
     }
 
@@ -59,9 +63,21 @@ public class Donor {
     
     @Override
     public String toString(){
-        return ("Donor: " + firstName + " " + middleInitial + " " + lastName
-                + "\nAmount given: " + amountDonated
+        String output = new String();
+        
+        if (this.spouseName.equals("\b")){
+            output = ("Donor: " + firstName + " " + lastName
+                + "\nAmount given: " + amountDonated + " (" + cashCheck + ")"
                 + "\nArea Donated: " + areaDonated);
+        }
+        else{
+            output = ("Donor: " + firstName + " & " + spouseName + " " + lastName
+                + "\nAmount given: " + amountDonated + " (" + cashCheck + ")"
+                + "\nArea Donated: " + areaDonated);
+        }
+        
+        
+        return output;
     }
     
 }
