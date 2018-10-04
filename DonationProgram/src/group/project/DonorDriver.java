@@ -4,26 +4,28 @@
  */
 package group.project;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Godmode
  */
 public class DonorDriver {
     
+    
     public static void main(String[] args) {
         
         DonorMain donorList = new DonorMain();
         
-        donorList.addDonor(new Donor("Bob", "L", "Donger", 37.00, "Tithes"));
-        donorList.addDonor(new Donor("Bill", "E", "Hickok", 25, "Tithes"));
-        donorList.addDonor(new Donor("Biff", "N", "Tannen", 17, "Tithes"));
-        donorList.addDonor(new Donor("Bart", "Tannen", 17, "Tithes"));
+        donorList.addDonor(new Donor("Bob R", "Linda", "Donger", 37.00, "CASH",
+                "Tithes"));
+        donorList.addDonor(new Donor("Bill", "Ella", "Hickok", 25, "1788",
+                "Tithes"));
+        donorList.addDonor(new Donor("Biff G", "Sally E", "Tannen", 17, "CASH",
+                "Tithes"));
+        donorList.addDonor(new Donor("Bart", "Tannen", 17, "1234", "Tithes"));
         
         donorList.getDonors();
         
-        donorList.getDonor("bill");
+        donorList.getDonor("b");
         
     }
     
