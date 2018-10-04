@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Godmode
+ * @author Jedidiah
  */
 public class DonorMain {
     
