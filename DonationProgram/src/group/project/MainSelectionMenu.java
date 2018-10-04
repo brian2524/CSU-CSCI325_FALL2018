@@ -33,7 +33,14 @@ public class MainSelectionMenu extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Main");
+        setBackground(new java.awt.Color(128, 128, 255));
+        setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        setForeground(java.awt.Color.black);
+        setName("frmMain"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(850, 800));
 
+        jButton1.setBackground(new java.awt.Color(128, 128, 255));
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jButton1.setText("Enter Contributions");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +63,9 @@ public class MainSelectionMenu extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jButton4.setText("View & Print Reports");
 
+        jButton5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButton5.setText("Quit");
+        jButton5.setToolTipText("Exit the Program");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,7 +79,7 @@ public class MainSelectionMenu extends javax.swing.JFrame {
                         .addComponent(jButton5))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -134,7 +143,8 @@ public class MainSelectionMenu extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
             public void run() {
                 new MainSelectionMenu().setVisible(true);
             }
