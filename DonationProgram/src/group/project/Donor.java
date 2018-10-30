@@ -16,24 +16,32 @@ public class Donor {
     private double amountDonated;
     private String cashCheck = new String();
     private String areaDonated = new String();
+    private boolean newDonor = false;
     
     public Donor (String f, String s, String l, double amt, String cc,
-            String area){
+            String area, boolean newD){
         firstName = f;
         lastName = l;
         spouseName = s;
         amountDonated = amt;
         cashCheck = cc;
         areaDonated = area;
+        if (newD){
+            newDonor = true;
+        }
     }
     
-    public Donor (String f, String l, double amt, String cc, String area){
+    public Donor (String f, String l, double amt, String cc, String area,
+            boolean newD){
         firstName = f;
         lastName = l;
         spouseName = "\b";
         amountDonated = amt;
         cashCheck = cc;
         areaDonated = area;
+        if (newD){
+            newDonor = true;
+        }
     }
 
     public String getName() {
@@ -72,9 +80,9 @@ public class Donor {
                 + "\nArea Donated: " + areaDonated);
         }
         else{
-            output = ("Donor: " + firstName + " & " + spouseName + " " + lastName
-                + "\nAmount given: " + amountDonated + " (" + cashCheck + ")"
-                + "\nArea Donated: " + areaDonated);
+            output = ("Donor: " + firstName + " & " + spouseName + " "
+                + lastName + "\nAmount given: " + amountDonated
+                + " (" + cashCheck + ")" + "\nArea Donated: " + areaDonated);
         }
         
         return output;
