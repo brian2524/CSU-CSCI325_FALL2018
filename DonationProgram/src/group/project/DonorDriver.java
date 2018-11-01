@@ -16,16 +16,19 @@ public class DonorDriver {
         DonorMain donorList = new DonorMain();
         
         donorList.addDonor(new Donor("Bob R", "Linda", "Donger", 37.00, "CASH",
-                "Tithes", false));
+                "Tithes", false, ""));
         donorList.addDonor(new Donor("Bill", "Ella", "Hickok", 25, "1788",
-                "Tithes", false));
+                "Tithes", false, ""));
         donorList.addDonor(new Donor("Biff G", "Sally E", "Tannen", 17, "CASH",
-                "Tithes", true));
-        donorList.addDonor(new Donor("Bart", "Tannen", 17, "1234", "Tithes", false));
+                "Tithes", true, "Some Notes..."));
+        donorList.addDonor(new Donor("Bart", "Tannen", 17, "1234", "Tithes",
+                false, ""));
+        donorList.addDonor(new Donor("Bob R", "Linda", "Donger", 55.00, "CASH",
+                "Tithes", false, ""));
         
         donorList.getDonors();
         
-        donorList.getDonor("alice");
+        donorList.getDonor("bob");
         
     }
     

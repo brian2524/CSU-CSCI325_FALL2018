@@ -16,10 +16,11 @@ public class Donor {
     private double amountDonated;
     private String cashCheck = new String();
     private String areaDonated = new String();
+    private String donorNotes = new String();
     private boolean newDonor = false;
     
     public Donor (String f, String s, String l, double amt, String cc,
-            String area, boolean newD){
+            String area, boolean newD, String n){
         firstName = f;
         lastName = l;
         spouseName = s;
@@ -29,10 +30,11 @@ public class Donor {
         if (newD){
             newDonor = true;
         }
+        donorNotes = n;
     }
     
     public Donor (String f, String l, double amt, String cc, String area,
-            boolean newD){
+            boolean newD, String n){
         firstName = f;
         lastName = l;
         spouseName = "\b";
@@ -42,6 +44,7 @@ public class Donor {
         if (newD){
             newDonor = true;
         }
+        donorNotes = n;
     }
 
     public String getName() {
@@ -77,15 +80,33 @@ public class Donor {
         if (this.spouseName.equals("\b")){
             output = ("Donor: " + firstName + " " + lastName
                 + "\nAmount given: " + amountDonated + " (" + cashCheck + ")"
-                + "\nArea Donated: " + areaDonated);
+                + "\nArea Donated: " + areaDonated)
+                + "\nNew Donor Notes: " + donorNotes;
         }
         else{
             output = ("Donor: " + firstName + " & " + spouseName + " "
                 + lastName + "\nAmount given: " + amountDonated
-                + " (" + cashCheck + ")" + "\nArea Donated: " + areaDonated);
+                + " (" + cashCheck + ")" + "\nArea Donated: " + areaDonated)
+                + "\nNew Donor Notes: " + donorNotes;
         }
         
         return output;
     }
+//    public String toString(){
+//        String output = new String();
+//        StringBuilder tempString = new StringBuilder();
+//        tempString.append("Donor: ").append(firstName).append(" ");
+//        if (this.spouseName.equals("\b")){
+//            tempString.append(spouseName).append(" ");
+//        }
+//        
+//                
+//        .append("\nAmount Given: ");
+//        
+//        
+//        
+//        output = tempString.toString();
+//        return output;
+//    }
     
 }
