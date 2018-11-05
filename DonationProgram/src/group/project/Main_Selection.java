@@ -6,33 +6,29 @@ package group.project;
 
 import java.util.ArrayList;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
-import static javafx.scene.text.FontWeight.BOLD;
 import javafx.stage.Stage;
 
 /**
  *
- * @author klancaster191098
+ * @author Kevin G. Lancaster
  */
 public class Main_Selection extends Application
 {
     private ArrayList<Donor> weekDonors;
+    Font defFont = new Font("Times New Roman", 15.75);    
     
     @Override
     public void start(Stage primaryStage)
     {
         // Button and Informational Label Declarations and Initialization
         // (Text, Font, Size, Alignment)
-        Font defFont = new Font("Times New Roman", 15.75);
         Button btnEntCont = new Button("Enter Contribution(s)");
         Button btnEntMisc = new Button("Enter Miscellaneous Information");
         Button btnCrossCheck = new Button("Perform Cross-Checks");
