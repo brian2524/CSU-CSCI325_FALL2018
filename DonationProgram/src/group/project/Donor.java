@@ -4,109 +4,84 @@
  */
 package group.project;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /**
  *
  * @author Jedidiah Bird
  */
 
 public class Donor {
-    private String firstName = new String();
-    private String lastName = new String();
-    private String spouseName = new String();
-    private double amountDonated;
-    private String cashCheck = new String();
-    private String areaDonated = new String();
-    private String donorNotes = new String();
-    private boolean newDonor = false;
+    private String firstName;
+    private String lastName;
+    private String spouseName;
+    private String fullName;
+    private String[] donorNotes = new String[5];
     
-    public Donor (String f, String s, String l, double amt, String cc,
-            String area, boolean newD, String n){
+    public Donor (String f, String s, String l, String[] n)
+    {
         firstName = f;
         lastName = l;
         spouseName = s;
-        amountDonated = amt;
-        cashCheck = cc;
-        areaDonated = area;
-        if (newD){
-            newDonor = true;
-        }
-        donorNotes = n;
+        System.arraycopy(n, 0, donorNotes, 0, n.length);
+        
     }
     
-    public Donor (String f, String l, double amt, String cc, String area,
-            boolean newD, String n){
+    public Donor (String f, String l, String[] n)
+    {
         firstName = f;
         lastName = l;
         spouseName = "\b";
-        amountDonated = amt;
-        cashCheck = cc;
-        areaDonated = area;
-        if (newD){
-            newDonor = true;
+        System.arraycopy(n, 0, donorNotes, 0, n.length);
+    }
+
+    public String getName()
+    {
+        File donations = new File("names.txt");
+        PrintWriter printWriter = null;
+        
+        StringBuilder tempString = new StringBuilder();
+        tempString.append(lastName).append(", ").append(firstName);
+        if (spouseName != "\b")
+        {
+            tempString.append(" & ").append(spouseName);
         }
-        donorNotes = n;
+        fullName = tempString.toString().toUpperCase();
+        
+        try
+        {
+            FileWriter fileWriter = new FileWriter(donations, true);
+            printWriter = new PrintWriter(fileWriter);
+            printWriter.println(fullName);
+        }
+        catch (IOException error)
+        {
+            System.out.println("Error: " + error.getMessage());
+        }
+        finally
+        {
+            if (printWriter != null)
+            {
+                printWriter.close();
+            }
+        }
+        
+        return fullName;
+    }
+    
+    public String[] getNotes()
+    {
+        return donorNotes;
     }
 
-    public String getName() {
-        return (firstName + " " + spouseName + " " + lastName);
-    }
-
-    public void setName(String f, String s, String l) {
+    public void setName(String f, String s, String l)
+    {
         this.firstName = f;
         this.spouseName = s;
         this.lastName = l;
     }
-
-    public double getAmountDonated() {
-        return amountDonated;
-    }
-
-    public void setAmountDonated(double amountDonated) {
-        this.amountDonated = amountDonated;
-    }
-
-    public String getAreaDonated() {
-        return areaDonated;
-    }
-
-    public void setAreaDonated(String areaDonated) {
-        this.areaDonated = areaDonated;
-    }
-    
-    @Override
-    public String toString(){
-        String output = new String();
-        
-        if (this.spouseName.equals("\b")){
-            output = ("Donor: " + firstName + " " + lastName
-                + "\nAmount given: " + amountDonated + " (" + cashCheck + ")"
-                + "\nArea Donated: " + areaDonated)
-                + "\nNew Donor Notes: " + donorNotes;
-        }
-        else{
-            output = ("Donor: " + firstName + " & " + spouseName + " "
-                + lastName + "\nAmount given: " + amountDonated
-                + " (" + cashCheck + ")" + "\nArea Donated: " + areaDonated)
-                + "\nNew Donor Notes: " + donorNotes;
-        }
-        
-        return output;
-    }
-//    public String toString(){
-//        String output = new String();
-//        StringBuilder tempString = new StringBuilder();
-//        tempString.append("Donor: ").append(firstName).append(" ");
-//        if (this.spouseName.equals("\b")){
-//            tempString.append(spouseName).append(" ");
-//        }
-//        
-//                
-//        .append("\nAmount Given: ");
-//        
-//        
-//        
-//        output = tempString.toString();
-//        return output;
-//    }
     
 }
