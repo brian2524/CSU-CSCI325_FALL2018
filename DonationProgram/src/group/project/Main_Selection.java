@@ -4,6 +4,7 @@
  */
 package group.project;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -22,10 +23,19 @@ import javafx.stage.Stage;
 public class Main_Selection extends Application
 {
     private ArrayList<Donor> weekDonors;
-    Font defFont = new Font("Times New Roman", 15.75);    
-    
+    private EntCont enterContributions;
+    private EntMisc enterMiscellaneous;
+    Font defFont = new Font("Times New Roman", 15.75);  
+    Font smlFont = new Font("Times New Roman", 12);
+
+    public Main_Selection() throws IOException
+    {
+        this.enterContributions = new EntCont();
+        this.enterMiscellaneous = new EntMisc();
+    }
+
     @Override
-    public void start(Stage primaryStage)
+    public void start(Stage stgMainSelect)
     {
         // Button and Informational Label Declarations and Initialization
         // (Text, Font, Size, Alignment)
@@ -93,20 +103,21 @@ public class Main_Selection extends Application
         mainSelection.setAlignment(Pos.CENTER);
         mainSelection.setPadding(new Insets(50));
         
+        
+        
+        // Create and Output Scene onto stage
+        Scene scnMainSelect = new Scene(mainSelection);        
+        stgMainSelect.setTitle("Weekly Counter Program");
+        stgMainSelect.setScene(scnMainSelect);
+        stgMainSelect.setMaximized(true);
+        stgMainSelect.show();
+
         // Register Button Handlers and create them as Lambdas
-        btnQuit.setOnAction(e -> {primaryStage.close();});
-        btnEntCont.setOnAction(e -> new EntCont());
-        btnEntMisc.setOnAction(e -> new EntMisc());
+        btnQuit.setOnAction(e -> {stgMainSelect.close();});
+        btnEntCont.setOnAction(e -> {enterContributions.entCont();});            
+        btnEntMisc.setOnAction(e -> {enterMiscellaneous.entMisc();});
         btnCrossCheck.setOnAction(e -> new CrossCheck());
         btnRptVP.setOnAction(e -> new Reports());
-        
-        
-        Scene scene = new Scene(mainSelection, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.setMaximized(true);
-        primaryStage.show();
     }
    
     /**

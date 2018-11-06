@@ -5,13 +5,19 @@
 package group.project;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -19,20 +25,25 @@ import javafx.stage.Stage;
  *
  * @author Kevin G. Lancaster
  */
-public class EntCont extends Main_Selection
+public class EntCont
 {
+    File offType = new File("Offering Types.txt");
+    File names = new File("Names.txt");
+    FileWriter offTypeAdd;
+    FileReader offTypeRead;
+    FileReader namesRead;
+    Stage stgEntCont = new Stage();
     Font defFont = new Font("Times New Roman", 15.75);
     Font smlFont = new Font("Times New Roman", 12);
-    File offType = new File("Offering Types.txt");
-    FileWriter offTypeAdd;
 
-    public EntCont() throws IOException
-    {
-        this.offTypeAdd = new FileWriter("Offering Types.txt");
-    }
+//    public EntCont() throws IOException
+//    {
+//        this.offTypeAdd = new FileWriter(offType);
+//        this.offTypeRead = new FileReader(offType);
+//        this.namesRead = new FileReader(names);
+//    }
     
-    @Override
-    public void start(Stage primaryStage)
+    public void entCont()
     {
         // Combo Box Declaration and Sizing
         ComboBox cboName = new ComboBox();
@@ -119,7 +130,7 @@ public class EntCont extends Main_Selection
         btnExitEntCont.setAlignment(Pos.CENTER);
         
         // Label Declaration, Font, and Alignment
-        Label lblNameBox = new Label("Name:");
+        Label lblNameBox = new Label("\tName:");
         lblNameBox.setFont(defFont);
         lblNameBox.setAlignment(Pos.CENTER);
         Label lblLoose = new Label("or \"Loose Offering\"");
@@ -134,5 +145,44 @@ public class EntCont extends Main_Selection
         Label lblCheckNum = new Label("Check Num\nor \"Cash\"");
         lblCheckNum.setFont(defFont);
         lblCheckNum.setAlignment(Pos.CENTER);
+        
+        // Arrange elements and controls in Scene
+        
+        // Offering Entry section
+        GridPane offEntry = new GridPane();
+        offEntry.addRow(0, lblOffType, lblAmt, lblCheckNum);
+        offEntry.addRow(1, cboOffType1, txtAmt1, txtCheckNum1);
+        offEntry.addRow(2, cboOffType2, txtAmt2, txtCheckNum2);
+        offEntry.addRow(3, cboOffType3, txtAmt3, txtCheckNum3);
+        offEntry.addRow(4, cboOffType4, txtAmt4, txtCheckNum4);
+        offEntry.add(btnNewOffType, 4, 1, 1, 2);
+        offEntry.setHgap(30);
+        offEntry.setVgap(20);
+        offEntry.setAlignment(Pos.CENTER);
+        
+        // Name Entry section
+        GridPane nameEntry = new GridPane();
+        nameEntry.addRow(0, lblNameBox, cboName, btnNewDonor);
+        nameEntry.add(lblLoose, 0, 1, 2, 1);
+        nameEntry.setAlignment(Pos.CENTER);
+        nameEntry.setHgap(30);
+        
+        // Combine Sections into Scene and output Scene onto Stage
+        VBox allEntCont = new VBox();
+        allEntCont.setAlignment(Pos.CENTER);
+        allEntCont.setPadding(new Insets(25));
+        allEntCont.setSpacing(50);
+        allEntCont.getChildren().addAll(nameEntry, offEntry, btnSaveCurrent,
+                                        btnExitEntCont);
+        
+        Scene scnEntCont = new Scene(allEntCont);        
+        stgEntCont.setTitle("Contribution Entry");
+        stgEntCont.setScene(scnEntCont);
+        stgEntCont.setMaximized(true);
+        stgEntCont.show();
+        
+        // Register Buttons
+        btnExitEntCont.setOnAction(e -> {stgEntCont.close();});
+        
     }
 }

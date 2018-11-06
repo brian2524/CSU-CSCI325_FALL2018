@@ -10,5 +10,8 @@ package group.project;
  */
 public class EntMisc
 {
-    
+    public void entMisc()
+    {
+        
+    }
 }
