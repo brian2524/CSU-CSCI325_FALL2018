@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 /**
@@ -25,7 +26,8 @@ public class Main_Selection extends Application
     private ArrayList<Donor> weekDonors;
     private EntCont enterContributions;
     private EntMisc enterMiscellaneous;
-    Font defFont = new Font("Times New Roman", 15.75);  
+    
+    Font defFont = new Font("Times New Roman", 15.75);
     Font smlFont = new Font("Times New Roman", 12);
 
     public Main_Selection() throws IOException
@@ -56,11 +58,11 @@ public class Main_Selection extends Application
                                         "denomination\nentries and the total " +
                                         "given vs. total given for\neach " +
                                         "Offering Type. It will also allow " +
-                                        "editing of entries if the cross-" +
+                                        "editing\nof entries if the cross-" +
                                         "check fails.");
         Label lblRptVP = new Label("This will allow previewing, editing if " +
-                                   "required, and printing of\nthe various " +
-                                   "reports, including a report of\nany new " +
+                                   "required,\nand printing of the various " +
+                                   "reports, including a\nreport of any new " +
                                    "giving units entered this week.");
         btnEntCont.setFont(defFont);
         btnEntCont.setMaxSize(300, 40);
@@ -78,18 +80,14 @@ public class Main_Selection extends Application
         btnRptVP.setMaxSize(300, 40);
         btnRptVP.setMinSize(300, 40);
         btnRptVP.setAlignment(Pos.CENTER);
-        btnQuit.setFont(defFont);
+        btnQuit.setFont(Font.font("Times New Roman", FontWeight.BOLD, 15.75));
         btnQuit.setMaxSize(140, 60);
         btnQuit.setMinSize(140, 60);
         btnQuit.setAlignment(Pos.CENTER);
         lblEntCont.setFont(defFont);
-        lblEntCont.setAlignment(Pos.CENTER_LEFT);
         lblEntMisc.setFont(defFont);
-        lblEntMisc.setAlignment(Pos.CENTER_LEFT);
         lblCrossCheck.setFont(defFont);
-        lblCrossCheck.setAlignment(Pos.CENTER_LEFT);
         lblRptVP.setFont(defFont);
-        lblRptVP.setAlignment(Pos.CENTER_LEFT);
         
         // Place the buttons and information labels into a Grid Pane
         GridPane mainSelection = new GridPane();

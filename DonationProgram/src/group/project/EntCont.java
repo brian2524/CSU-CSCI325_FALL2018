@@ -35,13 +35,15 @@ public class EntCont
     Stage stgEntCont = new Stage();
     Font defFont = new Font("Times New Roman", 15.75);
     Font smlFont = new Font("Times New Roman", 12);
+    private AddNewDonor newDonor;
 
-//    public EntCont() throws IOException
-//    {
+    public EntCont() throws IOException
+    {
 //        this.offTypeAdd = new FileWriter(offType);
 //        this.offTypeRead = new FileReader(offType);
 //        this.namesRead = new FileReader(names);
-//    }
+        this.newDonor = new AddNewDonor();
+    }
     
     public void entCont()
     {
@@ -183,6 +185,12 @@ public class EntCont
         
         // Register Buttons
         btnExitEntCont.setOnAction(e -> {stgEntCont.close();});
+        btnSaveCurrent.setOnAction(e -> {SaveClear();});
+        btnNewDonor.setOnAction(e -> {newDonor.addNewDonor();});
+    }
+    
+    private void SaveClear()
+    {
         
     }
 }
