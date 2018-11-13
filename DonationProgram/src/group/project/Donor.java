@@ -19,23 +19,23 @@ public class Donor {
     private String lastName;
     private String spouseName;
     private String fullName;
-    private String[] donorNotes = new String[5];
+    private String donorNotes = new String();
     
-    public Donor (String f, String s, String l, String[] n)
+    public Donor (String f, String s, String l, String n)
     {
         firstName = f;
         lastName = l;
         spouseName = s;
-        System.arraycopy(n, 0, donorNotes, 0, n.length);
+//        System.arraycopy(n, 0, donorNotes, 0, n.length);
         
     }
     
-    public Donor (String f, String l, String[] n)
+    public Donor (String f, String l, String n)
     {
         firstName = f;
         lastName = l;
-        spouseName = "\b";
-        System.arraycopy(n, 0, donorNotes, 0, n.length);
+//        spouseName = "\b";
+//        System.arraycopy(n, 0, donorNotes, 0, n.length);
     }
 
     public String getName()
@@ -45,7 +45,7 @@ public class Donor {
         
         StringBuilder tempString = new StringBuilder();
         tempString.append(lastName).append(", ").append(firstName);
-        if (spouseName != "\b")
+        if (spouseName.isEmpty())
         {
             tempString.append(" & ").append(spouseName);
         }
@@ -72,7 +72,7 @@ public class Donor {
         return fullName;
     }
     
-    public String[] getNotes()
+    public String getNotes()
     {
         return donorNotes;
     }
