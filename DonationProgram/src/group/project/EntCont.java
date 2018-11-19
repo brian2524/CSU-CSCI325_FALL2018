@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import static java.lang.Double.parseDouble;
+import java.util.ArrayList;
+import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,7 +19,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -27,7 +29,7 @@ import javafx.stage.Stage;
  */
 public class EntCont
 {
-    File offType = new File("Offering Types.txt");
+    File offTypes = new File("Offering Types.txt");
     File names = new File("Names.txt");
     FileWriter offTypeAdd;
     FileReader offTypeRead;
@@ -36,6 +38,8 @@ public class EntCont
     Font defFont = new Font("Times New Roman", 15.75);
     Font smlFont = new Font("Times New Roman", 12);
     private AddNewDonor newDonor;
+    private String name, offType, amtStr, chkNum;
+    //private ArrayList<Donor> newDonorList; 
 
     public EntCont() throws IOException
     {
@@ -45,7 +49,7 @@ public class EntCont
         this.newDonor = new AddNewDonor();
     }
     
-    public void entCont()
+    public void entCont(ArrayList<Donation> wkDon, ArrayList<Donor> newDon)
     {
         // Combo Box Declaration and Sizing
         ComboBox cboName = new ComboBox();
@@ -185,12 +189,136 @@ public class EntCont
         
         // Register Buttons
         btnExitEntCont.setOnAction(e -> {stgEntCont.close();});
-        btnSaveCurrent.setOnAction(e -> {SaveClear();});
-        btnNewDonor.setOnAction(e -> {newDonor.addNewDonor();});
-    }
-    
-    private void SaveClear()
-    {
+        btnNewDonor.setOnAction(e -> {newDonor.addNewDonor(newDon);});
+        btnSaveCurrent.setOnAction(e ->
+        {
+            Double amtDbl;
+            name = cboName.getEditor().getText();
+            if (!"".equals(cboOffType1.getEditor().getText()))
+            {
+                offType = cboOffType1.getEditor().getText();
+                amtStr = txtAmt1.getText();
+                amtStr = amtStr.substring(1);
+                amtDbl = parseDouble(amtStr);
+                chkNum = txtCheckNum1.getText();
+                Donation temp = new Donation(name, offType, amtDbl, chkNum);
+                wkDon.add(temp);
+            }
+            if (!"".equals(cboOffType2.getEditor().getText()))
+            {
+                offType = cboOffType2.getEditor().getText();
+                amtStr = txtAmt2.getText();
+                amtStr = amtStr.substring(1);
+                amtDbl = parseDouble(amtStr);
+                chkNum = txtCheckNum2.getText();
+                Donation temp = new Donation(name, offType, amtDbl, chkNum);
+                wkDon.add(temp);
+            }
+            if (!"".equals(cboOffType3.getEditor().getText()))
+            {
+                offType = cboOffType3.getEditor().getText();
+                amtStr = txtAmt3.getText();
+                amtStr = amtStr.substring(1);
+                amtDbl = parseDouble(amtStr);
+                chkNum = txtCheckNum3.getText();
+                Donation temp = new Donation(name, offType, amtDbl, chkNum);
+                wkDon.add(temp);
+            }
+            if (!"".equals(cboOffType4.getEditor().getText()))
+            {
+                offType = cboOffType4.getEditor().getText();
+                amtStr = txtAmt4.getText();
+                amtStr = amtStr.substring(1);
+                amtDbl = parseDouble(amtStr);
+                chkNum = txtCheckNum4.getText();
+                Donation temp = new Donation(name, offType, amtDbl, chkNum);
+                wkDon.add(temp);
+            }
+            cboName.getEditor().setText("");
+            cboOffType1.getEditor().setText("");
+            txtAmt1.setText("");
+            txtCheckNum1.setText("");
+            cboOffType2.getEditor().setText("");
+            txtAmt2.setText("");
+            txtCheckNum2.setText("");
+            cboOffType3.getEditor().setText("");
+            txtAmt3.setText("");
+            txtCheckNum3.setText("");
+            cboOffType4.getEditor().setText("");
+            txtAmt4.setText("");
+            txtCheckNum4.setText("");
+            cboName.requestFocus();
+        });
+
         
+        // Focus Change Registration - Used for $ and CASH
+        txtAmt1.focusedProperty().addListener((obs, oldVal, newVal) ->
+        {
+            if (oldVal && !newVal)
+            {
+                txtAmt1.setText("$" + txtAmt1.getText());
+            }
+        });
+        txtCheckNum1.focusedProperty().addListener((obs, oldVal, newVal) ->
+        {
+            if (oldVal && !newVal)
+            {
+                if (txtCheckNum1.getText().equalsIgnoreCase("CASH"))
+                {
+                    txtCheckNum1.setText("CASH");
+                }
+            }
+        });
+        txtAmt2.focusedProperty().addListener((obs, oldVal, newVal) ->
+        {
+            if (oldVal && !newVal)
+            {
+                txtAmt2.setText("$" + txtAmt1.getText());
+            }
+        });
+        txtCheckNum2.focusedProperty().addListener((obs, oldVal, newVal) ->
+        {
+            if (oldVal && !newVal)
+            {
+                if (txtCheckNum2.getText().equalsIgnoreCase("CASH"))
+                {
+                    txtCheckNum2.setText("CASH");
+                }
+            }
+        });
+        txtAmt3.focusedProperty().addListener((obs, oldVal, newVal) ->
+        {
+            if (oldVal && !newVal)
+            {
+                txtAmt3.setText("$" + txtAmt1.getText());
+            }
+        });
+        txtCheckNum3.focusedProperty().addListener((obs, oldVal, newVal) ->
+        {
+            if (oldVal && !newVal)
+            {
+                if (txtCheckNum3.getText().equalsIgnoreCase("CASH"))
+                {
+                    txtCheckNum3.setText("CASH");
+                }
+            }
+        });
+        txtAmt4.focusedProperty().addListener((obs, oldVal, newVal) ->
+        {
+            if (oldVal && !newVal)
+            {
+                txtAmt4.setText("$" + txtAmt1.getText());
+            }
+        });
+        txtCheckNum4.focusedProperty().addListener((obs, oldVal, newVal) ->
+        {
+            if (oldVal && !newVal)
+            {
+                if (txtCheckNum4.getText().equalsIgnoreCase("CASH"))
+                {
+                    txtCheckNum4.setText("CASH");
+                }
+            }
+        });
     }
 }

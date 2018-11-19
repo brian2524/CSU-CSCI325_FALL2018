@@ -4,6 +4,7 @@
  */
 package group.project;
 
+import java.util.ArrayList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,7 +29,7 @@ public class AddNewDonor
     Font smlFont = new Font("Times New Roman", 12);
     String firstName1, firstName2, lastName, notes;
     
-    public void addNewDonor()
+    public void addNewDonor(ArrayList<Donor> newDonorList)
     {
         // Miscellaneous Strings (Compile-time not empty)
         String strBtnAddExit = ("Add Name and Return to Contribution " +
@@ -56,7 +57,7 @@ public class AddNewDonor
         // Label Declaration, etc.
         Label lblFirstName1 = new Label("First Name 1 (Head): ");
         Label lblFirstName2 = new Label("First Name 2 (Spouse): ");
-        Label lblLastName = new Label("Last (Family) Name: ");
+        Label lblLastName = new Label("Last Name (Family): ");
         Label lblNote = new Label("Notes: ");
         lblFirstName1.setFont(defFont);
         lblFirstName2.setFont(defFont);
@@ -98,6 +99,8 @@ public class AddNewDonor
             firstName2 = txtFirstName2.getText();
             lastName = txtLastName.getText();
             notes = txtNote.getText();
+            Donor tempDonor = new Donor(firstName1, firstName2, lastName, notes);
+            newDonorList.add(tempDonor);
             stgNewDonor.close();
         });
     }

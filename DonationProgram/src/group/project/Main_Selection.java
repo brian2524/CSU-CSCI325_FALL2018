@@ -23,7 +23,8 @@ import javafx.stage.Stage;
  */
 public class Main_Selection extends Application
 {
-    private ArrayList<Donor> weekDonors;
+    private ArrayList<Donation> weekDonors;
+    private ArrayList<Donor> newDonors;
     private EntCont enterContributions;
     private EntMisc enterMiscellaneous;
     
@@ -112,10 +113,10 @@ public class Main_Selection extends Application
 
         // Register Button Handlers and create them as Lambdas
         btnQuit.setOnAction(e -> {stgMainSelect.close();});
-        btnEntCont.setOnAction(e -> {enterContributions.entCont();});            
+        btnEntCont.setOnAction(e -> {enterContributions.entCont(weekDonors, newDonors);});            
         btnEntMisc.setOnAction(e -> {enterMiscellaneous.entMisc();});
-        btnCrossCheck.setOnAction(e -> new CrossCheck());
-        btnRptVP.setOnAction(e -> new Reports());
+        btnCrossCheck.setOnAction(e -> new CrossCheck(weekDonors, enterMiscellaneous));
+        btnRptVP.setOnAction(e -> new Reports(weekDonors, newDonors, enterMiscellaneous));
     }
    
     /**

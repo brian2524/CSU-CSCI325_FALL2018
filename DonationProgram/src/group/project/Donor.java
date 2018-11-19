@@ -19,13 +19,14 @@ public class Donor {
     private String lastName;
     private String spouseName;
     private String fullName;
-    private String donorNotes = new String();
+    private String donorNotes;
     
     public Donor (String f, String s, String l, String n)
     {
         firstName = f;
         lastName = l;
         spouseName = s;
+        donorNotes = n;
 //        System.arraycopy(n, 0, donorNotes, 0, n.length);
         
     }
@@ -34,6 +35,7 @@ public class Donor {
     {
         firstName = f;
         lastName = l;
+        donorNotes = n;
 //        spouseName = "\b";
 //        System.arraycopy(n, 0, donorNotes, 0, n.length);
     }

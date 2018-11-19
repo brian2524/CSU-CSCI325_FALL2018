@@ -4,13 +4,16 @@
  */
 package group.project;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sonicthe
  */
 public class CrossCheck {
 
-    public CrossCheck() {
+    public CrossCheck(ArrayList<Donation> wkDon, EntMisc miscData)
+    {
     }
     
 }

@@ -82,17 +82,17 @@ public class DonorScreen
                 StringBuilder tempString = new StringBuilder();
                 String fullName = new String();
                 
-                String[] donorNotes;
-                donorNotes = donorNotesField.getText().split(",[ ]*");
+                String donorNotes = donorNotesField.getText();
+                //donorNotes = donorNotesField.getText().split(",[ ]*");
                 
                 fullName = tempString.append(lastNameField.getText())
                     .append(", ").append(firstNameField.getText()).append(" & ")
                     .append(spouseNameField.getText()).toString().toUpperCase();
                 tempString.append(";");
-                for (String donorNote : donorNotes)
-                {
-                    tempString.append(donorNote).append(";");
-                }
+//                for (String donorNote : donorNotes)
+//                {
+//                    tempString.append(donorNote).append(";");
+//                }
                 printWriter.println(tempString);
                 
                 

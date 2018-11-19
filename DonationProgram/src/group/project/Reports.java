@@ -4,13 +4,15 @@
  */
 package group.project;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sonicthe
  */
 public class Reports {
 
-    public Reports() {
+    public Reports(ArrayList<Donation> wkDon, ArrayList<Donor> newDon, EntMisc miscData) {
     }
     
 }
