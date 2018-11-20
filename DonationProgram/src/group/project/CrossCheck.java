@@ -12,8 +12,28 @@ import java.util.ArrayList;
  */
 public class CrossCheck {
 
+    ArrayList<Donation> donation = new ArrayList<Donation>();
+    EntMisc data;
+    
+    double totalDonationAmt;
+    double totalAmtCounted;
+    
+
     public CrossCheck(ArrayList<Donation> wkDon, EntMisc miscData)
     {
+        donation = wkDon;
+        data = miscData;
     }
     
+    
+    
+    public boolean RunCheck()
+    {
+        return true;
+    }
+    
+    public int CountChecks()
+    {
+        return 1;
+    }
 }
