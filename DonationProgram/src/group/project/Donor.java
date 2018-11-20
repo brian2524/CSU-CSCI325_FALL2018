@@ -42,7 +42,7 @@ public class Donor {
 
     public String getName()
     {
-        File donations = new File("names.txt");
+        File donations = new File("Names.txt");
         PrintWriter printWriter = null;
         
         StringBuilder tempString = new StringBuilder();

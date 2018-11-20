@@ -99,8 +99,11 @@ public class AddNewDonor
             firstName2 = txtFirstName2.getText();
             lastName = txtLastName.getText();
             notes = txtNote.getText();
-            Donor tempDonor = new Donor(firstName1, firstName2, lastName, notes);
+            Donor tempDonor = new Donor(firstName1, firstName2, lastName,
+                                        notes);
             newDonorList.add(tempDonor);
+            newDonorList.sort(null);
+            tempDonor.getName();
             stgNewDonor.close();
         });
     }
