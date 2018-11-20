@@ -35,6 +35,8 @@ public class Main_Selection extends Application
     {
         this.enterContributions = new EntCont();
         this.enterMiscellaneous = new EntMisc();
+        this.weekDonors = new ArrayList<>();
+        this.newDonors = new ArrayList<>();
     }
 
     @Override
