@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -27,6 +28,8 @@ public class Main_Selection extends Application
     private ArrayList<Donor> newDonors;
     private EntCont enterContributions;
     private EntMisc enterMiscellaneous;
+    private CrossCheck crossCheck;
+    private Reports rptVP;
     
     Font defFont = new Font("Times New Roman", 15.75);
     Font smlFont = new Font("Times New Roman", 12);
@@ -117,8 +120,24 @@ public class Main_Selection extends Application
         btnQuit.setOnAction(e -> {stgMainSelect.close();});
         btnEntCont.setOnAction(e -> {enterContributions.entCont(weekDonors, newDonors);});            
         btnEntMisc.setOnAction(e -> {enterMiscellaneous.entMisc();});
-        btnCrossCheck.setOnAction(e -> new CrossCheck(weekDonors, enterMiscellaneous));
-        btnRptVP.setOnAction(e -> new Reports(weekDonors, newDonors, enterMiscellaneous));
+        btnCrossCheck.setOnAction(e -> 
+        {
+            crossCheck = new CrossCheck(weekDonors, enterMiscellaneous);
+            if (!crossCheck.RunCheck())
+            {
+                Alert badCrossCheck = new Alert(Alert.AlertType.ERROR,
+                                                "Your data entry has errors," +
+                                                " please fix them before\n" +
+                                                "attempting to print " +
+                                                "the reports.\n\tThank you!!");
+                badCrossCheck.showAndWait();
+            }
+        });
+        btnRptVP.setOnAction(e ->
+        {
+            rptVP = new Reports(weekDonors, newDonors, enterMiscellaneous);
+            
+        });
     }
    
     /**

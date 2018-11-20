@@ -47,7 +47,7 @@ public class Donor {
         
         StringBuilder tempString = new StringBuilder();
         tempString.append(lastName).append(", ").append(firstName);
-        if (spouseName.isEmpty())
+        if (!spouseName.isEmpty())
         {
             tempString.append(" & ").append(spouseName);
         }

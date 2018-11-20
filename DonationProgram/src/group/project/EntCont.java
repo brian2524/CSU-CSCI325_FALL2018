@@ -382,7 +382,7 @@ public class EntCont
     private void addOffType() throws IOException
     {
         ChoiceDialog check = new ChoiceDialog("No", "Yes");
-        check.setHeaderText("Already There?");
+        //check.setHeaderText("Already There?");
         check.setContentText("Did you verify the Offering Type you are about " +
                              "to enter is not already on the list?");
         check.showAndWait();
@@ -409,8 +409,8 @@ public class EntCont
         }
         else
         {
-            Alert doCheck = new Alert(AlertType.WARNING, "Please check the list of available " +
-                                      "Offering Types.");
+            Alert doCheck = new Alert(AlertType.WARNING, "Please check the " +
+                                      "list of available Offering Types.");
             doCheck.showAndWait();
         }
     }
