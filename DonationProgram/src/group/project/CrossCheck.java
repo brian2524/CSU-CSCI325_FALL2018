@@ -29,11 +29,11 @@ public class CrossCheck {
     
     public boolean RunCheck()
     {
-        return true;
+        return true;        //temp return val
     }
     
     public int CountChecks()
     {
-        return 1;
+        return 1;           //temp return val
     }
 }
