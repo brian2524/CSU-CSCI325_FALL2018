@@ -11,6 +11,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -35,6 +36,23 @@ public class EntMisc
     private String ctr1, ctr2, bagNum;
     private int curr100, curr50, curr20, curr10, curr5, curr2, curr1;
     private int coin100, coin50, coin25, coin10, coin5, coin1;
+    
+    public EntMisc()
+    {
+        this.curr100 = 0;
+        this.curr50 = 0;
+        this.curr20 = 0;
+        this.curr10 = 0;
+        this.curr5 = 0;
+        this.curr2 = 0;
+        this.curr1 = 0;
+        this.coin100 = 0;
+        this.coin50 = 0;
+        this.coin25 = 0;
+        this.coin10 = 0;
+        this.coin5 = 0;
+        this.coin1 = 0;
+    }
     
     public void entMisc()
     {
@@ -237,62 +255,70 @@ public class EntMisc
             @Override
             public void handle(ActionEvent e)
             {
+                Alert noData;
+                boolean validInput;
+                String noDataText = ("You did not enter both counters' names " +
+                                     "and a deposit bag number. Please enter " +
+                                     "or verify these items and try again.");
                 ctr1 = txtCtr1.getText();
                 ctr2 = txtCtr2.getText();
                 bagNum = txtBagNum.getText();
-                if ("".equals(txtCurr100.getText()))
-                    curr100 = 0;
+                if ("".equals(ctr1) || "".equals(ctr2) || "".equals(bagNum))
+                {
+                    noData = new Alert(Alert.AlertType.ERROR, noDataText);
+                    noData.setTitle("Missing Required Information");
+                    noData.setHeaderText("");
+                    noData.showAndWait();
+                    validInput = false;
+                }
                 else
-                    curr100 = parseInt(txtCurr100.getText());
-                if ("".equals(txtCurr50.getText()))
-                    curr50 = 0;
-                else
-                    curr50 = parseInt(txtCurr50.getText());
-                if ("".equals(txtCurr20.getText()))
-                    curr20 = 0;
-                else
-                    curr20 = parseInt(txtCurr20.getText());
-                if ("".equals(txtCurr10.getText()))
-                    curr10 = 0;
-                else
-                    curr10 = parseInt(txtCurr10.getText());
-                if ("".equals(txtCurr5.getText()))
-                    curr5 = 0;
-                else
-                    curr5 = parseInt(txtCurr5.getText());
-                if ("".equals(txtCurr2.getText()))
-                    curr2 = 0;
-                else
-                    curr2 = parseInt(txtCurr2.getText());
-                if ("".equals(txtCurr1.getText()))
-                    curr1 = 0;
-                else
-                    curr1 = parseInt(txtCurr1.getText());
-                if ("".equals(txtCoin100.getText()))
-                    coin100 = 0;
-                else
-                    coin100 = parseInt(txtCoin100.getText());
-                if ("".equals(txtCoin50.getText()))
-                    coin50 = 0;
-                else
-                    coin50 = parseInt(txtCoin50.getText());
-                if ("".equals(txtCoin25.getText()))
-                    coin25 = 0;
-                else
-                    coin25 = parseInt(txtCoin25.getText());
-                if ("".equals(txtCoin10.getText()))
-                    coin10 = 0;
-                else
-                    coin10 = parseInt(txtCoin10.getText());
-                if ("".equals(txtCoin5.getText()))
-                    coin5 = 0;
-                else
-                    coin5 = parseInt(txtCoin5.getText());
-                if ("".equals(txtCoin1.getText()))
-                    coin1 = 0;
-                else
-                    coin1 = parseInt(txtCoin1.getText());
-                stgEntMisc.close();
+                    validInput = true;
+                try
+                {
+                    if (!"".equals(txtCurr100.getText()))
+                        curr100 = parseInt(txtCurr100.getText());
+                    if (!"".equals(txtCurr50.getText()))
+                        curr50 = parseInt(txtCurr50.getText());
+                    if (!"".equals(txtCurr20.getText()))
+                        curr20 = parseInt(txtCurr20.getText());
+                    if (!"".equals(txtCurr10.getText()))
+                        curr10 = parseInt(txtCurr10.getText());
+                    if (!"".equals(txtCurr5.getText()))
+                        curr5 = parseInt(txtCurr5.getText());
+                    if (!"".equals(txtCurr2.getText()))
+                        curr2 = parseInt(txtCurr2.getText());
+                    if (!"".equals(txtCurr1.getText()))
+                        curr1 = parseInt(txtCurr1.getText());
+                    if (!"".equals(txtCoin100.getText()))
+                        coin100 = parseInt(txtCoin100.getText());
+                    if (!"".equals(txtCoin50.getText()))
+                        coin50 = parseInt(txtCoin50.getText());
+                    if (!"".equals(txtCoin25.getText()))
+                        coin25 = parseInt(txtCoin25.getText());
+                    if (!"".equals(txtCoin10.getText()))
+                        coin10 = parseInt(txtCoin10.getText());
+                    if (!"".equals(txtCoin5.getText()))
+                        coin5 = parseInt(txtCoin5.getText());
+                    if (!"".equals(txtCoin1.getText()))
+                        coin1 = parseInt(txtCoin1.getText());
+                }
+                catch (NumberFormatException badFormat)
+                {
+                    String badDataText = ("You have entered one or more\ndeno" +
+                                          "mination quantities incorrectly.\n" +
+                                          "\nPlease enter only whole numbers " +
+                                          "in the blanks\nor leave blank if t" +
+                                          "here are no bills or coins of\ntha" +
+                                          "t denomination.\n\n\t\tThank you.");
+                    Alert badData =
+                            new Alert(Alert.AlertType.ERROR, badDataText);
+                    badData.setTitle("Bad Numerical Data");
+                    badData.setHeaderText("");
+                    badData.showAndWait();
+                    validInput = false;
+                }
+                if (validInput)
+                    stgEntMisc.close();
             }
         });
     }

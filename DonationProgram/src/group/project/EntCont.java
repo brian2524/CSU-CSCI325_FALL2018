@@ -4,6 +4,7 @@
  */
 package group.project;
 
+// Java and JavaFX Library items;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,16 +13,20 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -31,7 +36,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import org.controlsfx.control.textfield.TextFields; // See controlsfx.bitbucket.io
+
+// Other Libraries - Not my code!!
+
+    // See http://fxexperience.controlsfx for links and/or javadoc
+    import org.controlsfx.control.textfield.TextFields;
+
 
 /**
  *
@@ -43,17 +53,17 @@ public class EntCont
     List<String> namesList = null;
     ObservableList<String> offTypes;
     ObservableList<String> names;
-    BufferedReader offTypeRead =
-            Files.newBufferedReader(Paths.get("Offering Types.txt"));
-    BufferedReader namesRead =
-            Files.newBufferedReader(Paths.get("Names.txt"));
+    BufferedReader offTypeRead;
+    String offTypeFileName = ("Offering Types.txt");
+    BufferedReader namesRead;
+    String namesFileName = ("Names.txt");
     FileWriter offTypeWrite;
     Stage stgEntCont = new Stage();
     Font defFont = new Font("Times New Roman", 15.75);
     Font smlFont = new Font("Times New Roman", 12);
     private AddNewDonor newDonor;
     private String name, offType, amtStr, chkNum;
-    //private ArrayList<Donor> newDonorList; 
+    private ComboBox cboOffType1, cboOffType2, cboOffType3, cboOffType4, cboName; 
 
     public EntCont() throws IOException
     {
@@ -61,6 +71,8 @@ public class EntCont
         this.namesList = new ArrayList<>();
         offTypes = FXCollections.observableList(offTypeList);
         names = FXCollections.observableList(namesList);
+        offTypeRead = Files.newBufferedReader(Paths.get(offTypeFileName));
+        namesRead = Files.newBufferedReader(Paths.get(namesFileName));
         String line;
         while ((line = offTypeRead.readLine()) != null)
         {
@@ -78,7 +90,7 @@ public class EntCont
     public void entCont(ArrayList<Donation> wkDon, ArrayList<Donor> newDon)
     {
         // Combo Box Declaration and Sizing
-        ComboBox cboName = new ComboBox();
+        cboName = new ComboBox();
             cboName.setVisibleRowCount(8);
             cboName.setMaxSize(335, 31);
             cboName.setMinSize(335, 31);
@@ -86,7 +98,7 @@ public class EntCont
             cboName.setItems(names);
             TextFields.bindAutoCompletion(cboName.getEditor(),
                                           cboName.getItems());
-        ComboBox cboOffType1 = new ComboBox();
+        cboOffType1 = new ComboBox();
             cboOffType1.setVisibleRowCount(8);
             cboOffType1.setMaxSize(260, 31);
             cboOffType1.setMinSize(260, 31);
@@ -94,7 +106,7 @@ public class EntCont
             cboOffType1.setItems(offTypes);
             TextFields.bindAutoCompletion(cboOffType1.getEditor(),
                                           cboOffType1.getItems());
-        ComboBox cboOffType2 = new ComboBox();
+        cboOffType2 = new ComboBox();
             cboOffType2.setVisibleRowCount(8);
             cboOffType2.setMaxSize(260, 31);
             cboOffType2.setMinSize(260, 31);
@@ -102,7 +114,7 @@ public class EntCont
             cboOffType2.setItems(offTypes);
             TextFields.bindAutoCompletion(cboOffType2.getEditor(),
                                           cboOffType2.getItems());
-        ComboBox cboOffType3 = new ComboBox();
+        cboOffType3 = new ComboBox();
             cboOffType3.setVisibleRowCount(8);
             cboOffType3.setMaxSize(260, 31);
             cboOffType3.setMinSize(260, 31);
@@ -110,7 +122,7 @@ public class EntCont
             cboOffType3.setItems(offTypes);
             TextFields.bindAutoCompletion(cboOffType3.getEditor(),
                                           cboOffType3.getItems());
-        ComboBox cboOffType4 = new ComboBox();
+        cboOffType4 = new ComboBox();
             cboOffType4.setVisibleRowCount(8);
             cboOffType4.setMaxSize(260, 31);
             cboOffType4.setMinSize(260, 31);
@@ -229,7 +241,18 @@ public class EntCont
         
         // Register Buttons
         btnExitEntCont.setOnAction(e -> {stgEntCont.close();});
-        btnNewDonor.setOnAction(e -> {newDonor.addNewDonor(newDon);});
+        btnNewDonor.setOnAction(e ->
+        {
+            try
+            {
+                addNewDon(newDon);
+            }
+            catch (IOException ex)
+            {
+                Logger.getLogger(EntCont.class.getName()).log(Level.SEVERE,
+                                                              null, ex);
+            } 
+        });
         btnNewOffType.setOnAction(e ->
         {
             try
@@ -242,65 +265,69 @@ public class EntCont
                                                               null, ex);
             }
         });
-        btnSaveCurrent.setOnAction(e ->
+        btnSaveCurrent.setOnAction(new EventHandler<ActionEvent>()
         {
-            Double amtDbl;
-            name = cboName.getEditor().getText();
-            if (!"".equals(cboOffType1.getEditor().getText()))
+            @Override
+            public void handle(ActionEvent e)
             {
-                offType = cboOffType1.getEditor().getText();
-                amtStr = txtAmt1.getText();
-                amtStr = amtStr.substring(1);
-                amtDbl = parseDouble(amtStr);
-                chkNum = txtCheckNum1.getText();
-                Donation temp = new Donation(name, offType, amtDbl, chkNum);
-                System.out.println(temp.getDonorName());
-                wkDon.add(temp);
+                Double amtDbl;
+                name = cboName.getEditor().getText();
+                if (!"".equals(cboOffType1.getEditor().getText()))
+                {
+                    offType = cboOffType1.getEditor().getText();
+                    amtStr = txtAmt1.getText();
+                    amtStr = amtStr.substring(1);
+                    amtDbl = parseDouble(amtStr);
+                    chkNum = txtCheckNum1.getText();
+                    Donation temp = new Donation(name, offType, amtDbl, chkNum);
+                    System.out.println(temp.getDonorName());
+                    wkDon.add(temp);
+                }
+                if (!"".equals(cboOffType2.getEditor().getText()))
+                {
+                    offType = cboOffType2.getEditor().getText();
+                    amtStr = txtAmt2.getText();
+                    amtStr = amtStr.substring(1);
+                    amtDbl = parseDouble(amtStr);
+                    chkNum = txtCheckNum2.getText();
+                    Donation temp = new Donation(name, offType, amtDbl, chkNum);
+                    wkDon.add(temp);
+                }
+                if (!"".equals(cboOffType3.getEditor().getText()))
+                {
+                    offType = cboOffType3.getEditor().getText();
+                    amtStr = txtAmt3.getText();
+                    amtStr = amtStr.substring(1);
+                    amtDbl = parseDouble(amtStr);
+                    chkNum = txtCheckNum3.getText();
+                    Donation temp = new Donation(name, offType, amtDbl, chkNum);
+                    wkDon.add(temp);
+                }
+                if (!"".equals(cboOffType4.getEditor().getText()))
+                {
+                    offType = cboOffType4.getEditor().getText();
+                    amtStr = txtAmt4.getText();
+                    amtStr = amtStr.substring(1);
+                    amtDbl = parseDouble(amtStr);
+                    chkNum = txtCheckNum4.getText();
+                    Donation temp = new Donation(name, offType, amtDbl, chkNum);
+                    wkDon.add(temp);
+                }
+                cboName.getEditor().setText("");
+                cboOffType1.getEditor().setText("");
+                txtAmt1.setText("");
+                txtCheckNum1.setText("");
+                cboOffType2.getEditor().setText("");
+                txtAmt2.setText("");
+                txtCheckNum2.setText("");
+                cboOffType3.getEditor().setText("");
+                txtAmt3.setText("");
+                txtCheckNum3.setText("");
+                cboOffType4.getEditor().setText("");
+                txtAmt4.setText("");
+                txtCheckNum4.setText("");
+                cboName.requestFocus();
             }
-            if (!"".equals(cboOffType2.getEditor().getText()))
-            {
-                offType = cboOffType2.getEditor().getText();
-                amtStr = txtAmt2.getText();
-                amtStr = amtStr.substring(1);
-                amtDbl = parseDouble(amtStr);
-                chkNum = txtCheckNum2.getText();
-                Donation temp = new Donation(name, offType, amtDbl, chkNum);
-                wkDon.add(temp);
-            }
-            if (!"".equals(cboOffType3.getEditor().getText()))
-            {
-                offType = cboOffType3.getEditor().getText();
-                amtStr = txtAmt3.getText();
-                amtStr = amtStr.substring(1);
-                amtDbl = parseDouble(amtStr);
-                chkNum = txtCheckNum3.getText();
-                Donation temp = new Donation(name, offType, amtDbl, chkNum);
-                wkDon.add(temp);
-            }
-            if (!"".equals(cboOffType4.getEditor().getText()))
-            {
-                offType = cboOffType4.getEditor().getText();
-                amtStr = txtAmt4.getText();
-                amtStr = amtStr.substring(1);
-                amtDbl = parseDouble(amtStr);
-                chkNum = txtCheckNum4.getText();
-                Donation temp = new Donation(name, offType, amtDbl, chkNum);
-                wkDon.add(temp);
-            }
-            cboName.getEditor().setText("");
-            cboOffType1.getEditor().setText("");
-            txtAmt1.setText("");
-            txtCheckNum1.setText("");
-            cboOffType2.getEditor().setText("");
-            txtAmt2.setText("");
-            txtCheckNum2.setText("");
-            cboOffType3.getEditor().setText("");
-            txtAmt3.setText("");
-            txtCheckNum3.setText("");
-            cboOffType4.getEditor().setText("");
-            txtAmt4.setText("");
-            txtCheckNum4.setText("");
-            cboName.requestFocus();
         });
 
         
@@ -382,36 +409,83 @@ public class EntCont
     private void addOffType() throws IOException
     {
         ChoiceDialog check = new ChoiceDialog("No", "Yes");
-        //check.setHeaderText("Already There?");
+        check.setTitle("Already There?");
+        check.setHeaderText("");        
         check.setContentText("Did you verify the Offering Type you are about " +
                              "to enter is not already on the list?");
-        check.showAndWait();
-        if (check.getSelectedItem() == "Yes")
+        Optional<ButtonType> btnPress = check.showAndWait();
+
+        if ((btnPress.isPresent()) && (btnPress.get() != ButtonType.CANCEL))
         {
-            String tempOffType;
-            TextInputDialog addType = new TextInputDialog();
-            addType.setHeaderText("New Offering Type");
-            addType.setContentText("Please Enter the name of the new " +
-                                   "Offering Type:");
-            addType.showAndWait();
-            tempOffType = addType.getResult().toUpperCase();
-            offTypeList.add(tempOffType);
-            offTypeList.sort(null);
-            offTypeWrite = new FileWriter("Offering Types.txt");
-            int size = offTypeList.size();
-            for (int i = 0; i < size; i++)
+            if (check.getSelectedItem() == "Yes")
             {
-                String str = offTypeList.get(i);
-                offTypeWrite.write(str);
-                offTypeWrite.write('\n');
+                String tempOffType;
+                TextInputDialog addType = new TextInputDialog();
+                addType.setTitle("New Offering Type");
+                addType.setHeaderText("");
+                addType.setContentText("Please Enter the name of the new " +
+                                       "Offering Type:");
+                addType.showAndWait();
+                if (addType.getResult() != null)
+                {
+                    tempOffType = addType.getResult().toUpperCase();                
+                    offTypeList.add(tempOffType);
+                    offTypeList.sort(null);
+                    offTypeWrite = new FileWriter(offTypeFileName);
+                    int size = offTypeList.size();
+                    for (int i = 0; i < size; i++)
+                    {
+                        String str = offTypeList.get(i);
+                        offTypeWrite.write(str);
+                        offTypeWrite.write('\n');
+                    }
+                    offTypeWrite.close();
+                    offTypeList.clear();
+                    offTypeRead =
+                            Files.newBufferedReader(Paths.get(offTypeFileName));
+                    String line;
+                    while ((line = offTypeRead.readLine()) != null)
+                    {
+                        offTypeList.add(line);
+                    }
+                    offTypeRead.close();
+                    cboOffType1.setItems(offTypes);
+                    cboOffType2.setItems(offTypes);
+                    cboOffType3.setItems(offTypes);
+                    cboOffType4.setItems(offTypes);
+                    TextFields.bindAutoCompletion(cboOffType1.getEditor(),
+                                                  cboOffType1.getItems());
+                    TextFields.bindAutoCompletion(cboOffType2.getEditor(),
+                                                  cboOffType2.getItems());
+                    TextFields.bindAutoCompletion(cboOffType3.getEditor(),
+                                                  cboOffType3.getItems());
+                    TextFields.bindAutoCompletion(cboOffType4.getEditor(),
+                                                  cboOffType4.getItems());
+                }                
             }
-            offTypeWrite.close();
+            else
+            {
+                Alert doCheck = new Alert(AlertType.WARNING, "Please check the" +
+                                          " list of available Offering Types.");
+                doCheck.setTitle("Check the list!!");
+                doCheck.setHeaderText("");
+                doCheck.showAndWait();
+            }
         }
-        else
+    }
+    
+    private void addNewDon(ArrayList<Donor> newDon) throws IOException
+    {
+        newDonor.addNewDonor(newDon);
+        names.clear();
+        namesRead = Files.newBufferedReader(Paths.get(namesFileName));
+        String line;
+        while ((line = namesRead.readLine()) != null)
         {
-            Alert doCheck = new Alert(AlertType.WARNING, "Please check the " +
-                                      "list of available Offering Types.");
-            doCheck.showAndWait();
+            namesList.add(line);
         }
+        namesRead.close();
+        cboName.setItems(names);
+        TextFields.bindAutoCompletion(cboName.getEditor(), cboName.getItems());
     }
 }

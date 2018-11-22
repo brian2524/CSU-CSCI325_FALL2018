@@ -11,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -40,6 +41,7 @@ public class Main_Selection extends Application
         this.enterMiscellaneous = new EntMisc();
         this.weekDonors = new ArrayList<>();
         this.newDonors = new ArrayList<>();
+        this.rptVP = new Reports();
     }
 
     @Override
@@ -132,11 +134,12 @@ public class Main_Selection extends Application
                                                 "the reports.\n\tThank you!!");
                 badCrossCheck.showAndWait();
             }
+            Alert crossCheckDone = new Alert(AlertType.INFORMATION, "Cross Check Done!!");
+            crossCheckDone.showAndWait();
         });
         btnRptVP.setOnAction(e ->
         {
-            rptVP = new Reports(weekDonors, newDonors, enterMiscellaneous);
-            
+            rptVP.selectReport(weekDonors, newDonors, enterMiscellaneous);
         });
     }
    
