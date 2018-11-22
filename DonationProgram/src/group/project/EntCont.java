@@ -271,10 +271,10 @@ public class EntCont
             public void handle(ActionEvent e)
             {
                 Double amtDbl;
-                name = cboName.getEditor().getText();
+                name = cboName.getEditor().getText().toUpperCase();
                 if (!"".equals(cboOffType1.getEditor().getText()))
                 {
-                    offType = cboOffType1.getEditor().getText();
+                    offType = cboOffType1.getEditor().getText().toUpperCase();
                     amtStr = txtAmt1.getText();
                     amtStr = amtStr.substring(1);
                     amtDbl = parseDouble(amtStr);
@@ -285,7 +285,7 @@ public class EntCont
                 }
                 if (!"".equals(cboOffType2.getEditor().getText()))
                 {
-                    offType = cboOffType2.getEditor().getText();
+                    offType = cboOffType2.getEditor().getText().toUpperCase();
                     amtStr = txtAmt2.getText();
                     amtStr = amtStr.substring(1);
                     amtDbl = parseDouble(amtStr);
@@ -295,7 +295,7 @@ public class EntCont
                 }
                 if (!"".equals(cboOffType3.getEditor().getText()))
                 {
-                    offType = cboOffType3.getEditor().getText();
+                    offType = cboOffType3.getEditor().getText().toUpperCase();
                     amtStr = txtAmt3.getText();
                     amtStr = amtStr.substring(1);
                     amtDbl = parseDouble(amtStr);
@@ -305,7 +305,7 @@ public class EntCont
                 }
                 if (!"".equals(cboOffType4.getEditor().getText()))
                 {
-                    offType = cboOffType4.getEditor().getText();
+                    offType = cboOffType4.getEditor().getText().toUpperCase();
                     amtStr = txtAmt4.getText();
                     amtStr = amtStr.substring(1);
                     amtDbl = parseDouble(amtStr);
