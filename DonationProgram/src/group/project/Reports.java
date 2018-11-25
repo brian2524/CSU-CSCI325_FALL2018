@@ -6,8 +6,6 @@ package group.project;
 
 import java.util.ArrayList;
 import java.util.Optional;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 
@@ -46,27 +44,17 @@ public class Reports
             if (rptSelect.getSelectedItem() == "Weekly Donation Report")
             {
                 // Method call, passing ArrayList<>wkDon
-                Alert showSelect = new Alert(AlertType.INFORMATION, "You selected Weekly Donation Report");
-                showSelect.showAndWait();
             }
             if (rptSelect.getSelectedItem() == "Weekly Summary Report")
             {
                 // Method call, passing ArrayList<>wkDon and miscData
-                Alert showSelect = new Alert(AlertType.INFORMATION, "You selected Weekly Summary Report");
-                showSelect.showAndWait();
             }
             if (rptSelect.getSelectedItem() == "New Donor Report")
             {
                 // Method call, passing ArrayList<> newDon
-                Alert showSelect = new Alert(AlertType.INFORMATION, "You selected New Donor Report");
-                showSelect.showAndWait();
             }
-            Alert showSelect = new Alert(AlertType.INFORMATION, rptSelect.getSelectedItem().toString());
-            showSelect.showAndWait();
             btnPress = rptSelect.showAndWait();
         }
-        Alert showSelect = new Alert(AlertType.INFORMATION, rptSelect.getSelectedItem().toString());
-        showSelect.showAndWait();
     }
     
 }
