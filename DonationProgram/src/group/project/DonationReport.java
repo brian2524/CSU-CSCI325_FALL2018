@@ -10,9 +10,11 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -24,10 +26,10 @@ import javafx.stage.Stage;
 public class DonationReport {
     
     
-    private TableView<Donation> table;
+    /*private TableView<Donation> table;
     StackPane root = new StackPane();
     Stage primaryStage = new Stage();
-    Scene scene = new Scene(new Group());
+    Scene scene = new Scene(new Group()); */
     
     public DonationReport() {
         
@@ -36,15 +38,33 @@ public class DonationReport {
     }
  
     
-    public void setDonation(ArrayList<Donation> arrayLis) {
+    public void setDonation() {
+        String nam;
+        
+        Label name = new Label("Name Of Contributor");
+        Label offType = new Label ("Offering Type");
+        Label amount = new Label("Amount");
+        Label paymentType = new Label("Cash Or Check Num");
+        
+        GridPane gridPane = new GridPane();
+        gridPane.addColumn(0, name);
+        gridPane.addColumn(1, offType);
+        gridPane.addColumn(2, amount);
+        gridPane.addColumn(3, paymentType);
+        
+        
+        
 
-        ObservableList<Donation> obLis = FXCollections.observableList(arrayLis);
-        table = new TableView<Donation>(obLis);
+       /* ObservableList<Donation> obLis = FXCollections.observableList(arrayLis);
+        table = new TableView<Donation>();
+        table.setItems(obLis);
+        
         
         TableColumn<Donation, String> contributorName = new TableColumn("Name Of Contributor");
         contributorName.setMinWidth(190);
        contributorName.setCellValueFactory(
                 new PropertyValueFactory<>(("name of contributor")));
+       
                       
        TableColumn<Donation, String> offeringType = new TableColumn("Offering Type");
        offeringType.setMinWidth(190);
@@ -68,7 +88,9 @@ public class DonationReport {
         String paymentmethod;
               
         
-
+        
+        
+   
 
        
         Scene scene = new Scene(new Group());
@@ -79,7 +101,7 @@ public class DonationReport {
          VBox vb = new VBox();
         vb.setPadding(new Insets (100, 100, 100, 100));
         vb.setSpacing(5);
-        vb.getChildren().addAll(table);  
+        vb.getChildren().addAll(table); */
        
     }
         
