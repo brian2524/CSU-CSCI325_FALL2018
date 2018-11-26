@@ -50,13 +50,15 @@ public class CrossCheck
         
         for (int i = 0; i < donation.size(); i++)
         {
-            val = val + donation.get(i).getDonationAmt();
+            if (donation.get(i).getCheckCash().equals("CASH"))
+                val = val + donation.get(i).getDonationAmt();
             
-            if (i == donation.size())
-            {
-                totalDonationAmt = val;
-            }
+//            if (i == donation.size())
+//            {
+//                totalDonationAmt = val;
+//            }
         }
+        totalDonationAmt = val;
     }
     
     void CalculateTotalAmtCounted()
