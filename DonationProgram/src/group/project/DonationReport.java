@@ -5,6 +5,7 @@
 package group.project;
 
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -36,8 +37,9 @@ public class DonationReport {
  
     
     public void setDonation(ArrayList<Donation> arrayLis) {
-        
-        table = new TableView<Donation>((ObservableList<Donation>) arrayLis);
+
+        ObservableList<Donation> obLis = FXCollections.observableList(arrayLis);
+        table = new TableView<Donation>(obLis);
         
         TableColumn<Donation, String> contributorName = new TableColumn("Name Of Contributor");
         contributorName.setMinWidth(190);
@@ -65,6 +67,9 @@ public class DonationReport {
         double amount;
         String paymentmethod;
               
+        
+
+
        
         Scene scene = new Scene(new Group());
         table.getColumns().setAll(contributorName, offeringType,
