@@ -120,7 +120,8 @@ public class Main_Selection extends Application
 
         // Register Button Handlers and create them as Lambdas
         btnQuit.setOnAction(e -> {stgMainSelect.close();});
-        btnEntCont.setOnAction(e -> {enterContributions.entCont(weekDonors, newDonors);});            
+        btnEntCont.setOnAction(e -> {enterContributions.entCont(weekDonors,
+                                                                newDonors);});            
         btnEntMisc.setOnAction(e -> {enterMiscellaneous.entMisc();});
         btnCrossCheck.setOnAction(e -> 
         {
@@ -139,7 +140,8 @@ public class Main_Selection extends Application
         });
         btnRptVP.setOnAction(e ->
         {
-            rptVP.selectReport(weekDonors, newDonors, enterMiscellaneous);
+            rptVP.selectReport(weekDonors, newDonors,
+                               enterMiscellaneous, crossCheck);
         });
     }
    
