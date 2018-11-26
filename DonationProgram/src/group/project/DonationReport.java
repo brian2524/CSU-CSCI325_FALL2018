@@ -4,6 +4,7 @@
  */
 package group.project;
 
+import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -18,52 +19,64 @@ import javafx.stage.Stage;
  *
  * @author timiadavis
  */
-public class DonationReport extends Donation {
+public class DonationReport {
     
-   String nam, typ;
-   double amount;
-   String paymentmethod;
     
     private TableView table = new TableView();
     StackPane root = new StackPane();
     Stage primaryStage = new Stage();
     Scene scene = new Scene(new Group());
     
-    public DonationReport(String name, String type, double amt, String cc) {
-        super(name, type, amt, cc);
-        paymentmethod = cc;
-        nam = name;
-        typ = type;
-        amount = amt;
+    public DonationReport() {
+        
+        
+        
+    }
  
-            TableColumn contributorName = new TableColumn("Name Of Contributor");
+    
+    public void setDonation(ArrayList<Donation> arrayLis) {
+        
+        TableColumn contributorName = new TableColumn("Name Of Contributor");
         contributorName.setMinWidth(190);
        contributorName.setCellValueFactory(
-                new PropertyValueFactory<>(super.getDonorName()));
-    
-    
-              
+                new PropertyValueFactory<>(("name of contributor")));
+                      
        TableColumn offeringType = new TableColumn("Offering Type");
        offeringType.setMinWidth(190);
        offeringType.setCellValueFactory(
-                new PropertyValueFactory<>(super.getDonationType()));
+                new PropertyValueFactory<>(("offering type")));
        
        TableColumn contribamount = new TableColumn("Amount");
        contribamount.setMinWidth(190);
        contribamount.setCellValueFactory(
-                new PropertyValueFactory<>(Double.toString(amt)));
+                new PropertyValueFactory<>(("amount")));
        
        TableColumn totalDeposit = new TableColumn("CASH OR CHECK #");
        totalDeposit.setMinWidth(190);
        totalDeposit.setCellValueFactory(
-                new PropertyValueFactory<>(super.getCheckCash()));
+                new PropertyValueFactory<>(("cash or check")));
        
        
+       
+        String nam, typ;
+        double amount;
+        String paymentmethod;
+        
+        for (int i =0; i < arrayLis.size(); i++)
+        {
+            nam = arrayLis.get(i).getDonorName();
+            typ = arrayLis.get(i).getDonationType();
+            amount = arrayLis.get(i).getDonationAmt();
+            paymentmethod = arrayLis.get(i).getCheckCash();
+            
+        table.getColumns().addAll(nam, typ, amount, paymentmethod);
+        }
               
        
         Scene scene = new Scene(new Group());
         table.getColumns().addAll(contributorName, offeringType,
                 contribamount, totalDeposit);
+
         
          VBox vb = new VBox();
         vb.setPadding(new Insets (100, 100, 100, 100));
@@ -71,6 +84,15 @@ public class DonationReport extends Donation {
         vb.getChildren().addAll(table);  
        
     }
+        
+
+    }
+    
+    
+
+    
+    
+
 
            
 
@@ -78,4 +100,4 @@ public class DonationReport extends Donation {
        
        
 
-}
+
