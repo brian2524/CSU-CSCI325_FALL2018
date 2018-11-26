@@ -17,6 +17,8 @@ import javafx.scene.control.ChoiceDialog;
  */
 public class Reports
 {
+    DonationReport donRpt;
+    
     public Reports()
     {
         
@@ -45,7 +47,9 @@ public class Reports
             if (rptSelect.getSelectedItem() == "Weekly Donation Report")
             {
                 // Method call, passing ArrayList<>wkDon
-                testWkDonRpt(wkDon);
+                //testWkDonRpt(wkDon);
+                this.donRpt = new DonationReport();
+                donRpt.setDonation(wkDon);
             }
             if (rptSelect.getSelectedItem() == "Weekly Summary Report")
             {
