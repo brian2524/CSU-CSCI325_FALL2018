@@ -63,16 +63,15 @@ public class DonationReport {
             Label amoun = new Label(temp.toString());
             Label pay = new Label(wkDon.get(i).getCheckCash());
             
-            name.setText(wkDon.get(i).getDonorName());
 
-            
-            offType.setText(wkDon.get(i).getDonationType());
-            amount.setText(temp.toString());
-            paymentType.setText(wkDon.get(i).getCheckCash());
             
             gridPane.addRow(i + 1, nam, off, amoun, pay);
         }
        
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Weekly Donation Report");
+        primaryStage.setMaximized(true);
+        primaryStage.showAndWait();
     }
         
 
