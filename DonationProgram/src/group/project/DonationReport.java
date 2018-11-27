@@ -58,6 +58,11 @@ public class DonationReport {
         for (int i =0; i < wkDon.size(); i++)
         {
             Double temp = wkDon.get(i).getDonationAmt();
+            Label nam = new Label(wkDon.get(i).getDonorName());
+            Label off = new Label(wkDon.get(i).getDonationType());
+            Label amoun = new Label(temp.toString());
+            Label pay = new Label(wkDon.get(i).getCheckCash());
+            
             name.setText(wkDon.get(i).getDonorName());
 
             
@@ -65,7 +70,7 @@ public class DonationReport {
             amount.setText(temp.toString());
             paymentType.setText(wkDon.get(i).getCheckCash());
             
-            gridPane.addRow(i + 1, name, offType, amount, paymentType);
+            gridPane.addRow(i + 1, nam, off, amoun, pay);
         }
        
     }
