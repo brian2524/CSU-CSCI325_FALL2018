@@ -31,14 +31,14 @@ public class DonationReport {
     Stage primaryStage = new Stage();
     Scene scene = new Scene(new Group()); */
     
-    public DonationReport() {
-        
-        
+    public DonationReport()
+    {
         
     }
  
     
-    public void setDonation(ArrayList<Donation> wkDon) {
+    public void setDonation(ArrayList<Donation> wkDon)
+    {
         String nam;
         
         Label name = new Label("Name Of Contributor");
