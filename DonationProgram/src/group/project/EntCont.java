@@ -280,7 +280,6 @@ public class EntCont
                     amtDbl = parseDouble(amtStr);
                     chkNum = txtCheckNum1.getText();
                     Donation temp = new Donation(name, offType, amtDbl, chkNum);
-                    System.out.println(temp.getDonorName());
                     wkDon.add(temp);
                 }
                 if (!"".equals(cboOffType2.getEditor().getText()))

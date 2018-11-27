@@ -21,13 +21,14 @@ import javafx.scene.layout.GridPane;
  * PURPOSE: This class will print a report of all new donors entered
  * @author Dondra Crocker Richards
  */
-public class NewDonorReport  {
+public class NewDonorReport
+{
     private Stage newDonRptStage = new Stage();
     //constructor
     public NewDonorReport(){     
             
             }
-    private void displayNewDonRpt (ArrayList<Donor>newDon){
+    public void displayNewDonRpt (ArrayList<Donor>newDon){
         //iterate the new donor to display the names, and notes of the new donor
         //per Kevin's test code in Reports
         

@@ -57,9 +57,9 @@ public class DonationReport {
         gridPane.setAlignment(Pos.CENTER);
         
         wkDon.get(0).getDonorName();
-        wkDon.get(1).getDonationType();
-        wkDon.get(2).getDonationAmt();
-        wkDon.get(3).getCheckCash();
+        wkDon.get(0).getDonationType();
+        wkDon.get(0).getDonationAmt();
+        wkDon.get(0).getCheckCash();
 
         
         

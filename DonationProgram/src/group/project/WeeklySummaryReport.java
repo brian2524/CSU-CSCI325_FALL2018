@@ -29,7 +29,7 @@ public class WeeklySummaryReport {
        
     //method to display the summary totals for the week
     //per code written in test report from Kevin
-    private void weeklySumRpt(ArrayList<Donation>weeklyDon,EntMisc miscData, 
+    public void weeklySumRpt(ArrayList<Donation>weeklyDon,EntMisc miscData, 
             CrossCheck crossCheckData){
         
         //create grid

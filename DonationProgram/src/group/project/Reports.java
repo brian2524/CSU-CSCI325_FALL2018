@@ -29,6 +29,7 @@ public class Reports
     {
         boolean newDonors = newDon.isEmpty();
         ChoiceDialog rptSelect = new ChoiceDialog("Weekly Donation Report",
+                                                  "Weekly Donation Report",
                                                   "Weekly Summary Report",
                                                   "Finished");
         if (!newDonors)
@@ -54,13 +55,15 @@ public class Reports
             if (rptSelect.getSelectedItem() == "Weekly Summary Report")
             {
                 // Method call, passing ArrayList<>wkDon and miscData
-                testSumRpt(wkDon, miscData, crossCheckData);
+                WeeklySummaryReport wkSumRpt = new WeeklySummaryReport();
+                wkSumRpt.weeklySumRpt(wkDon, miscData, crossCheckData);
             }
             if (rptSelect.getSelectedItem() == "New Donor Report")
             {
                 // Method call, passing ArrayList<> newDon
                 //testNewDonRpt(newDon);
-                NewDonorReport testNewDon = new NewDonorReport(newDon);
+                NewDonorReport testNewDon = new NewDonorReport();
+                testNewDon.displayNewDonRpt(newDon);
             }
             btnPress = rptSelect.showAndWait();
         }
