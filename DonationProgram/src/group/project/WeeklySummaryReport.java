@@ -28,7 +28,7 @@ public class WeeklySummaryReport {
        
     //method to display the summary totals for the week
     //per code written in test report from Kevin
-    private void weeklySumRpt(ArrayList<Donation>weeklyDon,EntMisc miscData, 
+    public void weeklySumRpt(ArrayList<Donation>weeklyDon,EntMisc miscData, 
             CrossCheck crossCheckData){
         
         //create grid
@@ -63,7 +63,7 @@ public class WeeklySummaryReport {
         Scene wkSumRpt = new Scene(wkSumPane);
 
         weeklySumReportStage.setScene(wkSumRpt);
-        weeklySumReportStage.setTitle("New Donors Report");
+        weeklySumReportStage.setTitle("Weekly Summary Report");
         weeklySumReportStage.setWidth(800);
         weeklySumReportStage.setHeight(400);
         weeklySumReportStage.show();
