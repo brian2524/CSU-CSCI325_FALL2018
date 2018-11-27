@@ -13,7 +13,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
-
 /**
  *
  * @author Dondra Crocker Richards
@@ -59,14 +58,12 @@ public class WeeklySummaryReport {
               weeklyDon.get(index).getCheckCash();
               miscData.getCtr1(); 
                 miscData.getCtr2() ;
-                miscData.getBagNum();
-    
-            
+                miscData.getBagNum();            
         }
         Scene wkSumRpt = new Scene(wkSumPane);
 
         weeklySumReportStage.setScene(wkSumRpt);
-        weeklySumReportStage.setTitle("New Donors Report");
+        weeklySumReportStage.setTitle("Weekly Summary Report");
         weeklySumReportStage.setWidth(800);
         weeklySumReportStage.setHeight(400);
         weeklySumReportStage.show();
