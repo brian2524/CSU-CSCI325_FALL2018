@@ -1,7 +1,3 @@
-/*
- * By using this program you agree to hold the authors harmless
- * from any damages incurred.
- */
 package group.project;
 
 import java.util.ArrayList;
@@ -27,10 +23,9 @@ import javafx.stage.Stage;
 public class DonationReport {
     
     
-    /*private TableView<Donation> table;
     StackPane root = new StackPane();
     Stage primaryStage = new Stage();
-    Scene scene = new Scene(new Group()); */
+    Scene scene = new Scene(new Group());
     
     public DonationReport()
     {
@@ -56,61 +51,15 @@ public class DonationReport {
         gridPane.setHgap(20);
         gridPane.setAlignment(Pos.CENTER);
         
-        wkDon.get(0).getDonorName();
-        wkDon.get(0).getDonationType();
-        wkDon.get(0).getDonationAmt();
-        wkDon.get(0).getCheckCash();
-
         
-        
-
-       /* ObservableList<Donation> obLis = FXCollections.observableList(arrayLis);
-        table = new TableView<Donation>();
-        table.setItems(obLis);
-        
-        
-        TableColumn<Donation, String> contributorName = new TableColumn("Name Of Contributor");
-        contributorName.setMinWidth(190);
-       contributorName.setCellValueFactory(
-                new PropertyValueFactory<>(("name of contributor")));
-       
-                      
-       TableColumn<Donation, String> offeringType = new TableColumn("Offering Type");
-       offeringType.setMinWidth(190);
-       offeringType.setCellValueFactory(
-                new PropertyValueFactory<>(("offering type")));
-       
-       TableColumn<Donation, Double> contribamount = new TableColumn("Amount");
-       contribamount.setMinWidth(190);
-       contribamount.setCellValueFactory(
-                new PropertyValueFactory<>(("amount")));
-       
-       TableColumn<Donation, String> totalDeposit = new TableColumn("CASH OR CHECK #");
-       totalDeposit.setMinWidth(190);
-       totalDeposit.setCellValueFactory(
-                new PropertyValueFactory<>(("cash or check")));
-       
-       
-       
-        String nam, typ;
-        double amount;
-        String paymentmethod;
-              
-        
-        
-        
-   
-
-       
-        Scene scene = new Scene(new Group());
-        table.getColumns().setAll(contributorName, offeringType,
-                contribamount, totalDeposit);
-
-        
-         VBox vb = new VBox();
-        vb.setPadding(new Insets (100, 100, 100, 100));
-        vb.setSpacing(5);
-        vb.getChildren().addAll(table); */
+        for (int i =0; i < wkDon.size(); i++)
+        {
+            
+            wkDon.get(0).getDonorName();
+            wkDon.get(0).getDonationType();
+            wkDon.get(0).getDonationAmt();
+            wkDon.get(0).getCheckCash();
+        }
        
     }
         
