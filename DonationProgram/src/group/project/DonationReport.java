@@ -25,7 +25,6 @@ public class DonationReport {
     
     StackPane root = new StackPane();
     Stage primaryStage = new Stage();
-    Scene scene = new Scene(new Group());
     
     public DonationReport()
     {
@@ -52,13 +51,21 @@ public class DonationReport {
         gridPane.setAlignment(Pos.CENTER);
         
         
+        Scene scene = new Scene(gridPane);
+    
+        
+        
         for (int i =0; i < wkDon.size(); i++)
         {
+            Double temp = wkDon.get(i).getDonationAmt();
+            name.setText(wkDon.get(i).getDonorName());
+
             
-            wkDon.get(0).getDonorName();
-            wkDon.get(0).getDonationType();
-            wkDon.get(0).getDonationAmt();
-            wkDon.get(0).getCheckCash();
+            offType.setText(wkDon.get(i).getDonationType());
+            amount.setText(temp.toString());
+            paymentType.setText(wkDon.get(i).getCheckCash());
+            
+            gridPane.addRow(i + 1, name, offType, amount, paymentType);
         }
        
     }
