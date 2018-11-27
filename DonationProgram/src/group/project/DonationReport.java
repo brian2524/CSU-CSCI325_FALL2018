@@ -48,6 +48,7 @@ public class DonationReport {
         Label paymentType = new Label("Cash Or Check Num");
         
         GridPane gridPane = new GridPane();
+        
         gridPane.addColumn(0, name);
         gridPane.addColumn(1, offType);
         gridPane.addColumn(2, amount);
@@ -55,6 +56,11 @@ public class DonationReport {
         gridPane.setHgap(20);
         gridPane.setAlignment(Pos.CENTER);
         
+        wkDon.get(0).getDonorName();
+        wkDon.get(1).getDonationType();
+        wkDon.get(2).getDonationAmt();
+        wkDon.get(3).getCheckCash();
+
         
         
 
