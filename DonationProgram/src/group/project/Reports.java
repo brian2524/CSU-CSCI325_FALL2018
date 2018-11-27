@@ -59,7 +59,8 @@ public class Reports
             if (rptSelect.getSelectedItem() == "New Donor Report")
             {
                 // Method call, passing ArrayList<> newDon
-                testNewDonRpt(newDon);
+                //testNewDonRpt(newDon);
+                NewDonorReport testNewDon = new NewDonorReport(newDon);
             }
             btnPress = rptSelect.showAndWait();
         }

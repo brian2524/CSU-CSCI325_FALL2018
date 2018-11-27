@@ -132,11 +132,6 @@ public class AddNewDonor
         });
         return retVal;
     }
-
-    private void addDonor()
-    {
-        
-    }
     
     public String getFirstName1()
     {
