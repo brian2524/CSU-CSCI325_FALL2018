@@ -39,7 +39,7 @@ public class DonationReport {
     
     public void setDonation(ArrayList<Donation> wkDon)
     {
-        String nam;
+        
         
         Label name = new Label("Name Of Contributor");
         Label offType = new Label ("Offering Type");
