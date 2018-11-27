@@ -19,6 +19,9 @@ public class CrossCheck
     private double totalDonationAmt;    //all donations added up as a total
     private double totalAmtCounted; //coin and currency counted as a total
     
+    private double totalCurrency;
+    private double totalCoin;
+    
 
     public CrossCheck(ArrayList<Donation> wkDon, EntMisc miscData)
     {
@@ -51,35 +54,30 @@ public class CrossCheck
         for (int i = 0; i < donation.size(); i++)
         {
             if (donation.get(i).getCheckCash().equals("CASH"))
+            {
                 val = val + donation.get(i).getDonationAmt();
-            
-//            if (i == donation.size())
-//            {
-//                totalDonationAmt = val;
-//            }
+            }
         }
         totalDonationAmt = val;
     }
     
     void CalculateTotalAmtCounted()
     {
-        double val = 0;
-        val = val + data.getCurr100() * 100.00;
-        val = val + data.getCurr50() * 50.00;
-        val = val + data.getCurr20() * 20.00;
-        val = val + data.getCurr10() * 10.00;
-        val = val + data.getCurr5() * 5.00;
-        val = val + data.getCurr2() * 2.00;
-        val = val + data.getCurr1() * 1.00;
+        totalCurrency = totalCurrency + data.getCurr100() * 100.00;
+        totalCurrency = totalCurrency + data.getCurr50() * 50.00;
+        totalCurrency = totalCurrency + data.getCurr20() * 20.00;
+        totalCurrency = totalCurrency + data.getCurr10() * 10.00;
+        totalCurrency = totalCurrency + data.getCurr5() * 5.00;
+        totalCurrency = totalCurrency + data.getCurr2() * 2.00;
+        totalCurrency = totalCurrency + data.getCurr1() * 1.00;
         
-        val = val + data.getCoin100() * 1.00;
-        val = val + data.getCoin50() * 0.50;
-        val = val + data.getCoin25() * 0.25;
-        val = val + data.getCoin10() * 0.10;
-        val = val + data.getCoin5() * 0.05;
-        val = val + data.getCoin1() * 0.01;
+        totalCoin = totalCoin + data.getCoin100() * 1.00;
+        totalCoin = totalCoin + data.getCoin50() * 0.50;
+        totalCoin = totalCoin + data.getCoin25() * 0.25;
+        totalCoin = totalCoin + data.getCoin10() * 0.10;
+        totalCoin = totalCoin + data.getCoin5() * 0.05;
+        totalCoin = totalCoin + data.getCoin1() * 0.01;
         
-        totalAmtCounted = val;
+        totalAmtCounted = totalCurrency + totalCoin;
     }
-    
 }
