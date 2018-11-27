@@ -16,8 +16,6 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import javafx.scene.layout.GridPane;
 
-
-
 /**
  * PROGRAM: NewDonorReport.java
  * PURPOSE: This class will print a report of all new donors entered
@@ -36,7 +34,7 @@ public class NewDonorReport  {
         //create a grid pane
         GridPane newDonGrid = new GridPane();
         //create an hbox node
-        HBox newDonHbox = new HBox(400);
+        HBox newDonHbox = new HBox(400);        
         newDonHbox.setPadding(new Insets(15,15,15,15));
         newDonHbox.getChildren().add(new Label("Last Name: "));
         newDonHbox.getChildren().add(new Label("First Name1: "));
@@ -53,7 +51,7 @@ public class NewDonorReport  {
     Scene newDonRpt = new Scene(newDonGrid);
 
         newDonRptStage.setScene(newDonRpt);
-        newDonRptStage.setTitle("New Donors Rpeort");
+        newDonRptStage.setTitle("New Donors Report");
         newDonRptStage.setWidth(800);
         newDonRptStage.setHeight(400);
         newDonRptStage.show();
