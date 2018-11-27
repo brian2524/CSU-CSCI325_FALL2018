@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -51,6 +52,8 @@ public class DonationReport {
         gridPane.addColumn(1, offType);
         gridPane.addColumn(2, amount);
         gridPane.addColumn(3, paymentType);
+        gridPane.setHgap(20);
+        gridPane.setAlignment(Pos.CENTER);
         
         
         
