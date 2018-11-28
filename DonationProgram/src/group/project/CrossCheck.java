@@ -118,12 +118,15 @@ public class CrossCheck
                 }
             }
         }
+        
+        
+        //Debugging lines.....
         System.out.println("subtotals length: " + subtotals.size());
         System.out.println();
         
         for (int i = 0; i < subtotals.size(); i++)
         {
-            System.out.println(subtotals.get(i).getAreaName() + "" + subtotals.get(i).getAmt());     //for each subtotal, print its area and amount
+            System.out.println(subtotals.get(i).getAreaName() + " " + subtotals.get(i).getAmt());     //for each subtotal, print its area and amount
         }
     }
             
