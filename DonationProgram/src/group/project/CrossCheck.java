@@ -35,7 +35,7 @@ public class CrossCheck
         data = miscData;
         
         
-        GetSubtotals();
+        CreateSubtotals();
         
         
     }
@@ -92,7 +92,7 @@ public class CrossCheck
         totalAmtCounted = totalCurrency + totalCoin;
     }
     
-    void GetSubtotals()
+    void CreateSubtotals()
     {
         subtotals.add(new Subtotal("TITHES & OFFERINGS", 0));
         subtotals.add(new Subtotal("SUNDAY SCHOOL", 0));
