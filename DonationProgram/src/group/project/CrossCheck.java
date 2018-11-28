@@ -102,19 +102,29 @@ public class CrossCheck
         
         for (int i = 0; i < donation.size(); i++)
         {
+           boolean needsNew = true;
             for (int o = 0; o < subtotals.size(); o++)
             {
-                if (donation.get(i).getDonationType().equals(subtotals.get(i).getAreaName()))
+                if (donation.get(i).getDonationType().equals(subtotals.get(o).getAreaName()))
                 {
-                    subtotals.get(i).setAmt(subtotals.get(i).getAmt() + donation.get(i).getDonationAmt());
+                    subtotals.get(o).setAmt(subtotals.get(o).getAmt() + donation.get(i).getDonationAmt());
+                    needsNew = false;
                 }
-                else
+                if (needsNew == true)
                 {
                     subtotals.add(new Subtotal(donation.get(i).getDonationType(), donation.get(i).getDonationAmt()));
+                    System.out.println("--added new-- " + donation.get(i).getDonationType() +": " + donation.get(i).getDonationAmt());
+                    needsNew = false;
                 }
             }
         }
-        System.out.println(subtotals.get(0).getAmt());
+        System.out.println("subtotals length: " + subtotals.size());
+        System.out.println();
+        
+        for (int i = 0; i < subtotals.size(); i++)
+        {
+            System.out.println(subtotals.get(i).getAreaName() + "" + subtotals.get(i).getAmt());     //for each subtotal, print its area and amount
+        }
     }
             
             
