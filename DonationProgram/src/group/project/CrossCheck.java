@@ -26,6 +26,8 @@ public class CrossCheck
     private double totalCurrency;
     private double totalCoin;
     
+    private double totalChecks;
+    
     //get total amount of check numbers
     
 
@@ -36,7 +38,7 @@ public class CrossCheck
         
         
         CreateSubtotals();
-        
+        CalculateAmountOfChecks();
         
     }
     
@@ -116,21 +118,28 @@ public class CrossCheck
             if (needsNew == true)
             {
                 subtotals.add(new Subtotal(donation.get(i).getDonationType(), donation.get(i).getDonationAmt()));
-                System.out.println("--added new-- " + donation.get(i).getDonationType());
                 needsNew = false;
             }
         }
-        
-        
-        //Debugging lines.....
-        System.out.println("subtotals length: " + subtotals.size());
-        System.out.println();
-        
-        for (int i = 0; i < subtotals.size(); i++)
-        {
-            System.out.println(subtotals.get(i).getAreaName() + " " + subtotals.get(i).getAmt());     //for each subtotal, print its area and amount
-        }
     }
             
-            
+    
+    
+    void CalculateAmountOfChecks()
+    {
+        for (int i = 0; i < donation.size(); i++)
+        {
+            try 
+            { 
+                Integer.parseInt(donation.get(i).getCheckCash()); 
+                totalChecks++;
+                System.out.println(totalChecks);
+            }  
+            catch (NumberFormatException e)  
+            { 
+                System.out.println("not a check");
+                System.out.println(totalChecks);
+            }  
+        }
+    }
 }
