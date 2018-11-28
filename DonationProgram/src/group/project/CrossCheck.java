@@ -26,8 +26,6 @@ public class CrossCheck
     private double totalCurrency;
     private double totalCoin;
     
-    
-    //get array of area totals
     //get total amount of check numbers
     
 
@@ -102,7 +100,7 @@ public class CrossCheck
         
         for (int i = 0; i < donation.size(); i++)
         {
-           boolean needsNew = true;
+            boolean needsNew = true;
             for (int o = 0; o < subtotals.size(); o++)
             {
                 if (donation.get(i).getDonationType().equals(subtotals.get(o).getAreaName()))
@@ -110,12 +108,16 @@ public class CrossCheck
                     subtotals.get(o).setAmt(subtotals.get(o).getAmt() + donation.get(i).getDonationAmt());
                     needsNew = false;
                 }
-                if (needsNew == true)
-                {
-                    subtotals.add(new Subtotal(donation.get(i).getDonationType(), donation.get(i).getDonationAmt()));
-                    System.out.println("--added new-- " + donation.get(i).getDonationType() +": " + donation.get(i).getDonationAmt());
-                    needsNew = false;
-                }
+            }
+            
+            
+            
+            
+            if (needsNew == true)
+            {
+                subtotals.add(new Subtotal(donation.get(i).getDonationType(), donation.get(i).getDonationAmt()));
+                System.out.println("--added new-- " + donation.get(i).getDonationType());
+                needsNew = false;
             }
         }
         
