@@ -1,3 +1,5 @@
+    
+
 /*
  * By using this program you agree to hold the authors harmless
  * from any damages incurred
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 public class CrossCheck 
 {
     ArrayList<Donation> donation = new ArrayList<Donation>();
+    ArrayList<Subtotal> subtotals = new ArrayList<Subtotal>();  //arraylist of area totals
+    
     EntMisc data;
     
     private double totalDonationAmt;    //all donations added up as a total
@@ -22,11 +26,20 @@ public class CrossCheck
     private double totalCurrency;
     private double totalCoin;
     
+    
+    //get array of area totals
+    //get total amount of check numbers
+    
 
     public CrossCheck(ArrayList<Donation> wkDon, EntMisc miscData)
     {
         donation = wkDon;
         data = miscData;
+        
+        
+        GetSubtotals();
+        
+        
     }
     
     public boolean RunCheck()
@@ -80,4 +93,15 @@ public class CrossCheck
         
         totalAmtCounted = totalCurrency + totalCoin;
     }
+    
+    void GetSubtotals()
+    {
+        
+        
+        subtotals.add(new Subtotal("", 0));
+        subtotals.add(new Subtotal("", 0));
+        subtotals.add(new Subtotal("", 0));
+    }
+            
+            
 }
