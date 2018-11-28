@@ -96,11 +96,25 @@ public class CrossCheck
     
     void GetSubtotals()
     {
+        subtotals.add(new Subtotal("TITHES & OFFERINGS", 0));
+        subtotals.add(new Subtotal("SUNDAY SCHOOL", 0));
+        subtotals.add(new Subtotal("FAITH PROMISE 10%", 0));
         
-        
-        subtotals.add(new Subtotal("", 0));
-        subtotals.add(new Subtotal("", 0));
-        subtotals.add(new Subtotal("", 0));
+        for (int i = 0; i < donation.size(); i++)
+        {
+            for (int o = 0; o < subtotals.size(); o++)
+            {
+                if (donation.get(i).getDonationType().equals(subtotals.get(i).getAreaName()))
+                {
+                    subtotals.get(i).setAmt(subtotals.get(i).getAmt() + donation.get(i).getDonationAmt());
+                }
+                else
+                {
+                    subtotals.add(new Subtotal(donation.get(i).getDonationType(), donation.get(i).getDonationAmt()));
+                }
+            }
+        }
+        System.out.println(subtotals.get(0).getAmt());
     }
             
             

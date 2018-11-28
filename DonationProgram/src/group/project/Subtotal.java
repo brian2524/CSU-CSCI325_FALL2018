@@ -21,7 +21,6 @@ public class Subtotal
     }
     
     
-    //
     
 
     public String getAreaName() {
