@@ -15,20 +15,16 @@ import java.util.ArrayList;
  */
 public class CrossCheck 
 {
-    ArrayList<Donation> donation = new ArrayList<Donation>();
-    ArrayList<Subtotal> subtotals = new ArrayList<Subtotal>();  //arraylist of area totals
-    
     EntMisc data;
+    ArrayList<Donation> donation = new ArrayList<Donation>();
     
+    
+    ArrayList<Subtotal> subtotals = new ArrayList<Subtotal>();  //arraylist of area totals
     private double totalDonationAmt;    //all donations added up as a total
     private double totalAmtCounted; //coin and currency counted as a total
-    
     private double totalCurrency;
     private double totalCoin;
-    
-    private double totalChecks;
-    
-    //get total amount of check numbers
+    private double totalAmountOfChecks;
     
 
     public CrossCheck(ArrayList<Donation> wkDon, EntMisc miscData)
@@ -132,14 +128,42 @@ public class CrossCheck
             try 
             { 
                 Integer.parseInt(donation.get(i).getCheckCash()); 
-                totalChecks++;
-                System.out.println(totalChecks);
+                totalAmountOfChecks++;
             }  
             catch (NumberFormatException e)  
             { 
-                System.out.println("not a check");
-                System.out.println(totalChecks);
+                
             }  
         }
     }
+    
+    
+    
+    
+    // GETTERS
+
+    public ArrayList<Subtotal> getSubtotals() {
+        return subtotals;
+    }
+
+    public double getTotalDonationAmt() {
+        return totalDonationAmt;
+    }
+
+    public double getTotalAmtCounted() {
+        return totalAmtCounted;
+    }
+
+    public double getTotalCurrency() {
+        return totalCurrency;
+    }
+
+    public double getTotalCoin() {
+        return totalCoin;
+    }
+
+    public double getTotalAmountOfChecks() {
+        return totalAmountOfChecks;
+    }
+    
 }
