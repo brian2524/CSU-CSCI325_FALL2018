@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author timiadavis
+ * @author Timia Davis
  */
 public class DonationReport {
     
@@ -39,13 +39,13 @@ public class DonationReport {
         Label paymentType = new Label("Cash Or Check Num");
         
         GridPane gridPane = new GridPane();
-        Button exit = new Button("Exit Report View");
-            exit.setFont(Font.font("Times New Roman", 15.75));
-            exit.setAlignment(Pos.CENTER);
-            exit.setMinHeight(30);
-            exit.setMaxHeight(30);
-            exit.setMinWidth(300);
-            exit.setMaxWidth(300);
+        Button btnExit = new Button("Exit Report View");
+            btnExit.setFont(Font.font("Times New Roman", 15.75));
+            btnExit.setAlignment(Pos.CENTER);
+            btnExit.setMinHeight(30);
+            btnExit.setMaxHeight(30);
+            btnExit.setMinWidth(300);
+            btnExit.setMaxWidth(300);
         gridPane.addColumn(0, name);
         gridPane.addColumn(1, offType);
         gridPane.addColumn(2, amount);
@@ -63,7 +63,7 @@ public class DonationReport {
         gridPane.getColumnConstraints().add(2, rightAlign);
         gridPane.getColumnConstraints().add(3, leftAlign);
         
-        VBox vBoxAll = new VBox(gridPane, exit);
+        VBox vBoxAll = new VBox(gridPane, btnExit);
         vBoxAll.setSpacing(50);
         vBoxAll.setAlignment(Pos.CENTER);
         
@@ -84,7 +84,7 @@ public class DonationReport {
             
             gridPane.addRow(i + 1, nam, off, amoun, pay);
         }
-        exit.setOnAction(e -> {primaryStage.close();});       
+        btnExit.setOnAction(e -> {primaryStage.close();});       
         primaryStage.setScene(scene);
         primaryStage.setTitle("Weekly Donation Report");
         primaryStage.setMaximized(true);

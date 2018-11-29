@@ -13,7 +13,6 @@ import javafx.scene.control.ChoiceDialog;
 /**
  *
  * @author Kevin G. Lancaster - GUI elements
- * @author Dondra... all other methods
  */
 public class Reports
 {

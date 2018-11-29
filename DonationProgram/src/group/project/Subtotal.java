@@ -6,7 +6,7 @@ package group.project;
 
 /**
  *
- * @author Brian
+ * @author Brian Hinkle
  */
 public class Subtotal 
 {

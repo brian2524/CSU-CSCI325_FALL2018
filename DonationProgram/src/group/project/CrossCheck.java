@@ -10,8 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author sonicthe
- * @author Brian2524
+ * @author Brian Hinkle
  */
 public class CrossCheck 
 {
