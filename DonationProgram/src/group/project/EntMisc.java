@@ -1,6 +1,15 @@
+  
 /*
+ * Student Name: Brian Hinkle
+ * Program Name: Donation Program
+ * Creation Date: 11/26/2018
+ * Last Modified Date: 11/2/2020
+ * CSCI Course: CSCI 325
+ * Grade Received: A
+ * Design Comments:
  * By using this program you agree to hold the authors harmless
  * from any damages incurred.
+ * @author Kevin G. Lancaster
  */
 package group.project;
 
@@ -25,7 +34,6 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Kevin G. Lancaster
  */
 public class EntMisc
 {
