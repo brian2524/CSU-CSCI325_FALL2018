@@ -1,7 +1,7 @@
 /*
  * Student Name: Brian Hinkle
  * Program Name: Donation Program
- * Creation Date: 11/28/2018
+ * Creation Date: 11/26/2018
  * Last Modified Date: 11/2/2020
  * CSCI Course: CSCI 325
  * Grade Received: A
