@@ -1,4 +1,11 @@
 /*
+ * Student Name: Brian Hinkle
+ * Program Name: Donation Program
+ * Creation Date: 10/28/2020
+ * Last Modified Date: 11/2/2020
+ * CSCI Course: CSCI 325
+ * Grade Received: A
+ * Design Comments:
  * By using this program you agree to hold the authors harmless
  * from any damages incurred.
  */
